@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>编辑页面</title>
+    <meta name="keywords" content="苏宁易购"/>
+    <meta name="description" content="苏宁易购是国内领先的综合购物商城"/>
+    <link rel="shortcut icon" href="http://www.suning.com/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.4/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.4/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/zh.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main_02.css"/>
+    <!--[if lt IE 9]>
+    <script src="js/lib/html5shiv.min.js"></script>
+    <script src="js/lib/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="topEditor">
+    <div class="tabsHead">
+        <div class="tabsWrap clearfix">
+            <ul class="tabs fl">
+                <li>
+                    <a class="tabsMenu current" href="javascript:">页面板式</a>
+                </li>
+                <!--<li>
+                    <a class="tabsMenu current" href="javascript:">网站横幅</a>
+                </li>
+                <li>
+                    <a class="tabsMenu current" href="javascript:">网站主题</a>
+                </li>
+                <li>
+                    <a class="tabsMenu current" href="javascript:">网站设置</a>
+                </li>-->
+                <!--<li>
+                    <a class="tabsMenu current" href="javascript:" data-toggle="modal" data-target="#imgModal">图片上传</a>
+                </li>-->
+            </ul>
+            <div class="tabsTools fr">
+                <a href="javascript:;" class="saveBtn">
+                    <span class="saveIcon"></span>
+                    <span class="saveText">保&nbsp;&nbsp;存</span>
+                </a>
+                <a href="javascript:;" class="cancelBtn">取&nbsp;消</a>
+                <a href="javascript:" title="点击收起设计面板" class="g_styleDesignArrow up topEditor-dropBtn"></a>
+            </div>
+        </div>
+    </div>
+    <div class="tabsContent">
+        <div class="contentWrap">
+            <div class="nav-left">
+                <ul class="subMenu">
+                    <li>
+                        <a href="javascript:" class="on">标准板式</a>
+                    </li>
+                    <!--<li>
+                        <a href="javascript:">自由板式</a>
+                    </li>-->
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="nav-right-content">
+                    <ul class="layoutList clearfix">
+                        <li>
+                            <a href="javascript:" class="item_1 on" layout_item="0">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="item_2" layout_item="1">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:" class="item_4" layout_item="2">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_3">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_5">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_6">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_7">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_8">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_9">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_10">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_11">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                        <li class="hidden">
+                            <a href="javascript:" class="item_12">
+                                <em class="chkItem"></em>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-right-content" style="display:none">
+                    子菜单二
+                </div>
+            </div>
+        </div>
+        <!--网站横幅-->
+        <div class="contentWrap" style="display:none">
+            <div class="nav-left">
+                <ul class="subMenu">
+                    <li>
+                        <a href="javascript:" class="on">项目一</a>
+                    </li>
+                    <li>
+                        <a href="javascript:">项目二</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="nav-right-content">
+                    横幅-子菜单一
+                </div>
+                <div class="nav-right-content" style="display:none">
+                    横幅-子菜单二
+                </div>
+            </div>
+        </div>
+        <!--网站主题-->
+        <div class="contentWrap" style="display:none">
+            <div class="nav-left">
+                <ul class="subMenu">
+                    <li>
+                        <a href="javascript:" class="on">项目一</a>
+                    </li>
+                    <li>
+                        <a href="javascript:">项目二</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right">
+                <div class="nav-right-content">
+                    主题-子菜单一
+                </div>
+                <div class="nav-right-content" style="display:none">
+                    主题-子菜单二
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="topEditor-cutLine"></div>
+<div class="widget-wrap">
+    <div class="yg-leftbar">
+        <a href="javascript:;" title="新增模块" class="yg-leftbar-newm"></a>
+        <a href="javascript:;" title="网站样式" class="yg-leftbar-css"></a>
+    </div>
+    <div class="yg-float-panel">
+        <div class="yg-fp-nav">
+            <ul>
+                <li class="on"><a href="javascript:;" title="添加模块" class="add-module"></a></li>
+                <li><a href="javascript:;" title="删除模块" class="delete-module"></a></li>
+                <li><a href="javascript:;" title="网站样式" class="web-css"></a></li>
+            </ul>
+            <div class="yg-closeBtn">
+                <a href="javascript:;" title="关闭"></a>
+            </div>
+        </div>
+        <div class="yg-panel-item">
+            <div class="yg-item-sub-tab">
+                <ul class="clearfix">
+                    <li class="on"><a href="javascript:;">基础</a></li>
+                    <li><a href="javascript:;">排版</a></li>
+                    <li><a href="javascript:;">产品</a></li>
+                    <li><a href="javascript:;">文章</a></li>
+                    <li><a href="javascript:;">图册</a></li>
+                    <li><a href="javascript:;">高级</a></li>
+                </ul>
+            </div>
+            <div class="yg-item-detail">
+                <div class="yg-item-container base-item">
+                    <fieldset>
+                        <legend>基础</legend>
+                        <div class="yg-item-context">
+                            <ul class="clearfix">
+                                <li><a module_type = "echart_bar" href="javascript:;" class="widgetBtn">柱状图</a></li>
+                                <li><a module_type = "echart_pie" href="javascript:;" class="widgetBtn">饼状图</a></li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="yg-item-container artlist-item">
+                    <fieldset>
+                        <legend>文章</legend>
+                        <div class="yg-item-context">
+                            <ul class="clearfix">
+                                <li><a module_type = "artlist" href="javascript:;" class="widgetBtn">文章列表</a></li>
+                                <li><a module_type = "imglist" href="javascript:;" class="widgetBtn">图文列表</a></li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body">
+    <!--<div class="top">
+        <div class="container editor-wrap">
+            top部分容器
+        </div>
+    </div>
+    <div class="head">
+        <div class="container editor-wrap">
+            head部分容器
+        </div>
+    </div>
+    &lt;!&ndash;main_1:&ndash;&gt;
+    <div class="main container">
+        <div class="row">
+            <div class="editor-wrap col-lg-3">
+                左侧容器
+            </div>
+            <div class="editor-wrap col-lg-9">
+                右侧容器
+            </div>
+        </div>
+    </div>
+    &lt;!&ndash;main_2&ndash;&gt;
+    <div class="main container">
+        <div class="row">
+            <div class="editor-wrap col-lg-12">
+                主容器
+            </div>
+        </div>
+    </div>
+    &lt;!&ndash;main_3&ndash;&gt;
+    <div class="main container">
+        <div class="row">
+            <div class="editor-wrap col-lg-3">
+                左侧
+            </div>
+            <div class="editor-wrap col-lg-6">
+                中间
+            </div>
+            <div class="editor-wrap col-lg-3">
+                右侧
+            </div>
+        </div>
+    </div>-->
+</div>
+<!--上传弹窗-->
+<div id="imgModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">图片上传与查看</h4>
+            </div>
+            <div class="modal-body">
+                <a type="button" class="btn btn-default uploadFile">
+                    <span>图片上传</span>
+                    <input class="fileInput" id="fileupload" type="file" name="files[]" data-type="jsonp" multiple />
+                </a>
+                <div id="progress" class="progress mt10" style="height:10px">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <ul id="files" class="files clearfix">
+
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary upload-confirm" data-dismiss="modal">确定</button>
+                <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--<script data-main="js/main" src="js/lib/require.js"></script>-->
+<!--js模块模板-->
+<!--模块鼠标移入时显示模版-->
+<script id="modelHover" type="text/html">
+    <div class="modelHover-wrap">
+        <div class="draggableBtn">
+            <a href="javascript:;" class="dragHandle"></a>
+        </div>
+        <div class="m-item-list clearfix">
+            <div class="m-item editBtn"><a class="" href="javascript:;">编辑</a></div>
+            <div class="m-item"><a href="javascript:;">设置样式</a></div>
+            <!--<% _.each(items, function(i) { %>
+            <div class="m-item">
+                <a href="javascript:;" class="<%= i.class %>"><%= i.context %></a>
+            </div>
+            <% }); %>-->
+            <!--文章列表-->
+            <div class="m-item extra-btn articleList-add" style="display:none;"><a class="" href="javascript:;">添加文章</a></div>
+            <div class="m-item"><a href="javascript:;">高级</a></div>
+        </div>
+        <div class="shortcutLayer">
+            <a href="javascript:" class="del" title="删除"></a>
+            <a href="javascript:" class="add" title="添加"></a>
+        </div>
+    </div>
+</script>
+
+<!--文章列表-->
+<script id="articleList" type="text/html" class="template">
+    <div class="article-list">
+        <div class="ul-wrap">
+            <ul>
+                <% _.each(items, function(i) { %>
+                <li>
+                    <a class="title" href="<%= i.href %>"><%= i.context %></a>
+                    <span class="time"><%= i.time %></span>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<!--测试组件-->
+<script id="demo-unit" type="text/html" class="template">
+    <div class="demo-unit">
+        <h3><span title="点击可编辑标题名称"><%= title %></span><input class="hidden" type="text" placeholder="请输入标题"/></h3>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+</script>
+
+<!--echarts组件-->
+<script id="echart" type="text/html" class="template">
+    <div class="echart" style="height:400px">
+        这是一个echart
+    </div>
+</script>
+
+<!--图片列表-->
+<script id="imgList" type="text/html" class="template">
+    <div class="article-list">
+        <div class="model-head clearfix">
+            <h3><%= title %></h3>
+            <a href="#" class="has-more" data-toggle="modal" data-target="#imgModal">添加图片</a>
+        </div>
+        <ul class="files clearfix">
+            <% _.each(items, function(i) { %>
+            <li>
+                <a href="javascript:" class="thumbnail">
+                    <img width="64" height="64" src="<%= i.href %>" alt="一张图片"/>
+                </a>
+            </li>
+            <% }); %>
+        </ul>
+    </div>
+</script>
+
+<!--js引入-->
+</body>
+</html>
