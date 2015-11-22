@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="css/index.main.css"/>
+    <link rel="stylesheet" href="css/index.workbench.lj.css"/>
+    <link rel="stylesheet" href="css/index.workbench.theme.yellow.css"/>
+    <link rel="stylesheet" href="css/index-r-table.css"/>
+    <link rel="stylesheet" href="css/index-r-yellow.css"/>
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css"/>
+    <link rel="stylesheet" href="css/jquery.gridster.min.css"/>
+</head>
+<body>
+<div class="min1200">
+    <!--顶部区域-->
+    <div class="top clearfix">
+        <div class="logo">
+            <em></em>
+        </div>
+        <div class="title">
+            刘冰冰的工作平台
+        </div>
+        <div class="sw-btn">
+            切换工作平台 <em></em>
+            <ul>
+                <li>
+                    <a href="javascript:">核算经理</a>
+                </li>
+                <li>
+                    <a href="javascript:">项目经理</a>
+                </li>
+            </ul>
+        </div>
+        <div class="r-tools clearfix">
+            <a href="javascript:" class="theme"></a>
+            <a href="javascript:" class="msg">
+                <em>23</em>
+            </a>
+            <div class="head-btn">
+                <img src="temp/head.jpg" alt="头像"/>刘冰冰 <em></em>
+                <ul>
+                    <li>
+                        <a href="javascript:">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main clearfix">
+        <!--左侧菜单栏-->
+        <div class="l-nav">
+            <!--导航栏-->
+            <div class="nav-wrap mCustomScrollbar" data-mcs-theme="dark">
+                <ul>
+                    <li>
+                        <a class="on" href="javascript:">
+                            <em class="one"></em>
+                            <span>首页</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="two"></em>
+                            <span>数据分析与监控第三方的身份斯蒂芬</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="three"></em>
+                            <span>数据分析与监控</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="four"></em>
+                            <span>数据分析与监控</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="five"></em>
+                            <span>数据分析与监控</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="six"></em>
+                            <span>数据分析与监控</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <em class="seven"></em>
+                            <span>数据分析与监控</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="editor-wrap mCustomScrollbar"   data-mcs-theme="dark">
+                <h1>添加模块 <a class="c-btn" href="javascript:"></a></h1>
+                <dl>
+                    <dt>通用</dt>
+                    <dd class="clearfix">
+                        <a class="widget used" href="javascript:" type_id="xxcz" wid_id="xxcz">
+                            <em class="xuexi"></em>
+                            <p>学习成长</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="wddb" wid_id="wddb">
+                            <em class="daiban"></em>
+                            <p>我的待办</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="wddb" wid_id="wddy">
+                            <em class="daiyue"></em>
+                            <p>我的待阅</p>
+                            <i></i>
+                        </a>
+                        <a  class="widget"href="javascript:" type_id="wddb" wid_id="tzgg">
+                            <em class="tongzhi"></em>
+                            <p>通知公告</p>
+                            <i></i>
+                        </a>
+                        <a  class="widget"href="javascript:" type_id="wddb" wid_id="fwgg">
+                            <em class="fawen"></em>
+                            <p>发文公告</p>
+                            <i></i>
+                        </a>
+                    </dd>
+                    <dt>专业</dt>
+                    <dd class="clearfix">
+                        <a class="widget"  href="javascript:" type_id="kmtj" wid_id="zdkmjk" title="重点科目监控" >
+                            <em class="fenxi"></em>
+                            <p>重点科目监控</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="kmtj" wid_id="kmwqje" title="科目未清金额前10大区" >
+                            <em class="kemu"></em>
+                            <p>科目未清金额</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="rwtj" wid_id="rwtj" title="任务统计" >
+                            <em class="tongji"></em>
+                            <p>任务统计</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="dbrw" wid_id="dbrw" title="待办任务" >
+                            <em class="renwu"></em>
+                            <p>待办任务</p>
+                            <i></i>
+                        </a>
+                    </dd>
+                    <dt>办公自动</dt>
+                    <dd class="clearfix">
+                        <a class="widget" href="javascript:" type_id="cycd" wid_id="cycd" title="常用菜单">
+                            <em class="caidan"></em>
+                            <p>常用菜单</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="cyxt" wid_id="cyxt" title="常用系统">
+                            <em class="xitong"></em>
+                            <p>常用系统</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="rssh" wid_id="jcrs" title="基础人事">
+                            <em class="renshi"></em>
+                            <p>基础人事</p>
+                            <i></i>
+                        </a>
+                        <a class="widget" href="javascript:" type_id="rssh" wid_id="ygsh" title="员工生活">
+                            <em class="shenghuo"></em>
+                            <p>员工生活</p>
+                            <i></i>
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+            <!--底部工具栏-->
+            <div class="l-tools-bottom">
+                <a class="tools-btn" href="javascript:" title="编辑模式"><em></em></a>
+                <a class="review-btn" href="javascript:" title="预览"><em></em></a>
+                <a class="save-btn" href="javascript:" title="保存"><em></em></a>
+                <a style="display:none" class="fold-btn collapse-btn" href="javascript:"><em></em></a>
+            </div>
+        </div>
+        <!--右侧内容区域-->
+        <div class="r-mn">
+			<div class="r-container scroll-c gridster">
+                <ul class="mods-contain" style="background-color:#e4e2d7">
+                </ul>
+                <div class="copyrights pd-layout2">
+                    苏宁云商集团股份有限公司  SUNING COMMERCE GROUP CO., LTD.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--右下角消息提示-->
+<!--<div class="info-tips-alert">
+    <div class="close">
+        我知道了 <a href="javascript:;" onclick="this.offsetParent.style.display='none'"></a>
+    </div>
+    <div class="context active">
+        <h3>任务超期提醒1：</h3>
+        <p>某某任务已超期 <span class="red-color">3</span>天，请及时处理。某某任务已超期<span class="red-color">3</span>天请及时处理。</p>
+        <p class="text-right gray6">2015年8月7日 12:00:00</p>
+    </div>
+    <div class="context">
+        <h3>任务超期提醒2：</h3>
+        <p>某某任务已超期 <span class="red-color">2</span>天，请及时处理。某某任务已超期<span class="red-color">3</span>天请及时处理。</p>
+        <p class="text-right gray6">2015年8月7日 12:00:00</p>
+    </div>
+    <div class="context">
+        <h3>任务超期提醒3：</h3>
+        <p>某某任务已超期 <span class="red-color">1</span>天，请及时处理。某某任务已超期<span class="red-color">3</span>天请及时处理。</p>
+        <p class="text-right gray6">2015年8月7日 12:00:00</p>
+    </div>
+    <div class="bottom">
+        <span class="page-count">
+            <em class="red-color">1</em>/3
+        </span>
+        <div class="btn-handler">
+            <a href="javascript:;" class="prev"></a>
+
+            <a href="javascript:;" class="next"></a>
+        </div>
+
+    </div>
+</div>-->
+
+<!--文章列表-->
+<script id="articleList" type="text/html" class="template">
+    <div class="article-list">
+        <div class="ul-wrap">
+            <ul>
+                <% _.each(items, function(i) { %>
+                <li>
+                    <a class="title" href="<%= i.href %>"><%= i.context %></a>
+                    <span class="time"><%= i.time %></span>
+                </li>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</script>
+<!--常用菜单-->
+<script id="usual-menu" type="text/html" class="template">
+    <div class="usual-menu custom-com">
+        <div class="ul-wrap">
+			<% _.each(list, function(i,index,lst) { %>
+                <% if( index==0){ %>
+                    <ul class="clearfix" style="display: block">
+                <% } %>
+                        <li>
+                            <a class="con of" href="<%= i.href %>">
+                                <span><%= i.title %></span>
+                            </a>
+                        </li>
+
+                <%if ( index % 5 == 0 && index!= lst.length-1 &&index!=0){ %>
+                        <li>
+                            <a class="add" href="#">
+                                <span></span>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="clearfix">
+                <% } %>
+                <% if (index==lst.length-1){ %>
+                        <li>
+                            <a class="add" href="#">
+                                <span></span>
+                            </a>
+                        </li>
+                    </ul>
+                <% } %>
+            <% }); %>
+        </div>
+        <div class="roll">
+            <a href="javascript:;" class="prev" title="上一页"></a>
+            <a href="javascript:;" class="next" title="下一页"></a>
+        </div>
+    </div>
+</script>
+<script id="hr-life" type="text/html" class="template">
+    <div class="basic-hr custom-com hr-life">
+        <div class="ul-wrap">
+            <% _.each(list, function(i,index,lst) { %>
+            <% if( index==0){ %>
+            <ul class="clearfix" style="display: block">
+                <% } %>
+                <li>
+                    <a class="con of" href="<%= i.href %>">
+                        <span><%= i.title %></span>
+                    </a>
+                </li>
+
+                <%if ( index % 5 == 0 && index!= lst.length-1 &&index!=0){ %>
+                <li>
+                    <a class="add" href="#">
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="clearfix">
+                <% } %>
+                <% if (index==lst.length-1){ %>
+                <li>
+                    <a class="add" href="#">
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+            <% } %>
+            <% }); %>
+        </div>
+        <div class="roll">
+            <a href="javascript:;" class="prev" title="上一页"></a>
+            <a href="javascript:;" class="next" title="下一页"></a>
+        </div>
+    </div>
+</script>
+<script id="cfx-sys" type="text/html" class="template">
+    <div class="cfx-sys custom-com">
+        <div class="ul-wrap">
+            <% _.each(list, function(i,index,lst) { %>
+            <% if( index==0){ %>
+            <ul class="clearfix" style="display: block">
+                <% } %>
+                <li>
+                    <a class="con" href="<%= i.href %>">
+                        <img src="<%= i.picUrl  %>" alt="<%= i.title %>"/>
+                        <span class="of"><%= i.title %></span>
+                    </a>
+                </li>
+
+                <%if ( index % 5 == 0 && index!= lst.length-1 &&index!=0){ %>
+                <li>
+                    <a class="add" href="javascript:;">
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="clearfix">
+                <% } %>
+                <% if (index==lst.length-1){ %>
+                <li>
+                    <a class="add" href="#">
+                        <span></span>
+                    </a>
+                </li>
+            </ul>
+            <% } %>
+            <% }); %>
+
+        </div>
+        <div class="roll">
+            <a href="javascript:;" class="prev" title="上一页"></a>
+            <a href="javascript:;" class="next" title="下一页"></a>
+        </div>
+    </div>
+</script>
+<div class="popup normal-pop index-pop" id="pop1">
+    <div class="popup-bg"></div>
+    <div class="pop-wrap">
+        <div class="pop-hd">
+            <h3>管理我的自助（<em>人事生活</em>）<span>点击添加或取消，可拖拽调整顺序</span></h3>
+        </div>
+        <div class="pop-contain">
+            <div class="con-wrap">
+                <ul class="clearfix">
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <span>我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-center mt10 decision-btn">
+                <a href="javascript:;" class="confirm btn-1 mr10">确定</a>
+                <a href="javascript:;" class="cancel btn-2">取消</a>
+            </div>
+        </div>
+    </div>
+    <b class="close"></b>
+</div>
+<div class="popup normal-pop index-pop" id="pop2">
+    <div class="popup-bg"></div>
+    <div class="pop-wrap">
+        <div class="pop-hd">
+            <h3>管理我的自助（<em>常用系统</em>）<span>点击添加或取消，可拖拽调整顺序</span></h3>
+        </div>
+        <div class="pop-contain">
+            <div class="con-wrap">
+                <ul class="clearfix">
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <img src="temp/1.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <img src="temp/2.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <img src="temp/3.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="">
+                            <img src="temp/4.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="">
+                            <img src="temp/5.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="has-add">
+                            <img src="temp/6.png" alt="" width="50" height="50"/>
+                            <br/>
+                            <span class="of">我的排班</span>
+                            <em></em>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-center mt10 decision-btn">
+                <a href="javascript:;" class="confirm btn-1 mr10">确定</a>
+                <a href="javascript:;" class="cancel btn-2">取消</a>
+            </div>
+        </div>
+    </div>
+    <b class="close"></b>
+</div>
+<div class="popup normal-pop index-pop" id="pop3">
+    <div class="popup-bg"></div>
+    <div class="pop-wrap">
+        <div class="pop-hd">
+            <h3>管理我的常用菜单</h3>
+        </div>
+        <div class="pop-contain">
+            <div class="tab-btn clearfix">
+                <a href="javascript:;" class="active">搜索</a>
+                <a href="javascript:;">已添加菜单</a>
+            </div>
+            <div class="tab-content-list" style="display: block;">
+                <div class="search-keyword">
+                    <input type="text" placeholder="输入关键字搜索"/>
+                    <a href="javascript:;" title="搜索"></a>
+                </div>
+
+                <div class="search-resault">
+                    <p>相关搜索结果如下：</p>
+                    <div class="table-wrap">
+                        <table>
+                            <tr>
+                                <th>菜单类型</th>
+                                <th>菜单名称</th>
+                                <th>操作</th>
+                                <th>菜单描述</th>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="has-add" href="javascript:;" >
+                                        <em></em>
+                                        已添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="not-add" href="javascript:;">
+                                        <em></em>
+                                        添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="has-add" href="javascript:;" >
+                                        <em></em>
+                                        已添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="not-add" href="javascript:;">
+                                        <em></em>
+                                        添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="has-add" href="javascript:;" >
+                                        <em></em>
+                                        已添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="not-add" href="javascript:;">
+                                        <em></em>
+                                        添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="has-add" href="javascript:;" >
+                                        <em></em>
+                                        已添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="not-add" href="javascript:;">
+                                        <em></em>
+                                        添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="has-add" href="javascript:;" >
+                                        <em></em>
+                                        已添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                            <tr>
+                                <td>行政管理</td>
+                                <td>发文</td>
+                                <td>
+                                    <a class="not-add" href="javascript:;">
+                                        <em></em>
+                                        添加
+                                    </a>
+                                </td>
+                                <td>我的排班</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-content-list">
+                <div class="has-add-menu usual-menu">
+                    <ul class="clearfix">
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班1</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班2</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班3</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班4</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班5</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班6</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班7</span>
+                                <em></em>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="javascript:;" class="has-add">
+                                <span class="of">我的排班8</span>
+                                <em></em>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="text-center mt10 decision-btn">
+                <a href="javascript:;" class="confirm btn-1 mr10">确定</a>
+                <a href="javascript:;" class="cancel btn-2">取消</a>
+            </div>
+        </div>
+    </div>
+    <b class="close"></b>
+</div>
+<script data-main="js/main" src="js/lib/require.js"></script>
+
+</body>
+</html>

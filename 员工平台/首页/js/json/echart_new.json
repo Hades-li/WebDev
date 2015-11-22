@@ -1,0 +1,27 @@
+{
+  "widgetInstId": "123",
+  "widgetTypeId": "simpleList",
+  "title": "重点科目监控",
+  "more": "http://www.jd.com",
+  "select":["科目3","科目4"],
+  "data":{
+      "xAxis" : [
+        {
+          "type" : "category",
+          "data" : ["总额","一二四五六","3月","4月","5月","6月","7月","8月","9月","10月"]
+        }
+      ],
+      "yAxis" : [
+        {
+          "type" : "value"
+        }
+      ],
+      "series" : [
+        {
+          "name":"蒸发量",
+          "type":"bar",
+          "data":[1000, 35,60, 70, 76, 765, 532, 23, 765, 100]
+        }
+      ]
+  }
+}

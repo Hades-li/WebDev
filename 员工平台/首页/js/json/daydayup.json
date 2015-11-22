@@ -1,0 +1,48 @@
+{
+    "widgetInstId": "123",
+    "widgetTypeId": "simpleList",
+    "title": "学习成长",
+    "more": "http://www.baidu.com",
+    "list": [
+        {
+            "date": "2015-10-21",
+            "picUrl": "http://image4.suning.cn/uimg/cms/img/144599433433088776.jpg",
+            "title": "苏宁智慧客房管理系统SIT第一轮测试报告",
+            "href": "http://ssopre.cnsuning.com/ids/login?service=http://snwk.cnsuning.com:8080/snwk-web/auth?targetUrl=http://snwk.cnsuning.com:8080/snwk-web/docs/view.htm?docId=1045&loginTheme=defaultTheme",
+            "classify": "新业务会计核算",
+            "count": "0"
+        },
+        {
+            "date": "2015-10-21",
+            "picUrl": "http://image4.suning.cn/uimg/cms/img/144599433433088776.jpg",
+            "title": "苏宁智慧客房管理系统冒烟测试报告",
+            "href": "http://ssopre.cnsuning.com/ids/login?service=http://snwk.cnsuning.com:8080/snwk-web/auth?targetUrl=http://snwk.cnsuning.com:8080/snwk-web/docs/view.htm?docId=1044&loginTheme=defaultTheme",
+            "classify": "新业务会计核算",
+            "count": "0"
+        },
+        {
+            "date": "2015-10-21",
+            "picUrl": "http://image4.suning.cn/uimg/cms/img/144599433433088776.jpg",
+            "title": "测试方案模板",
+            "href": "http://ssopre.cnsuning.com/ids/login?service=http://snwk.cnsuning.com:8080/snwk-web/auth?targetUrl=http://snwk.cnsuning.com:8080/snwk-web/docs/view.htm?docId=1043&loginTheme=defaultTheme",
+            "classify": "新业务会计核算",
+            "count": "0"
+        },
+        {
+            "date": "2015-10-21",
+            "picUrl": "http://image4.suning.cn/uimg/cms/img/144599433433088776.jpg",
+            "title": "测试场景-需求映射表",
+            "href": "http://ssopre.cnsuning.com/ids/login?service=http://snwk.cnsuning.com:8080/snwk-web/auth?targetUrl=http://snwk.cnsuning.com:8080/snwk-web/docs/view.htm?docId=1042&loginTheme=defaultTheme",
+            "classify": "新业务会计核算",
+            "count": "0"
+        },
+        {
+            "date": "2015-10-21",
+            "picUrl": "http://image4.suning.cn/uimg/cms/img/144599433433088776.jpg",
+            "title": "测试报告模板",
+            "href": "http://ssopre.cnsuning.com/ids/login?service=http://snwk.cnsuning.com:8080/snwk-web/auth?targetUrl=http://snwk.cnsuning.com:8080/snwk-web/docs/view.htm?docId=1041&loginTheme=defaultTheme",
+            "classify": "新业务会计核算",
+            "count": "0"
+        }
+    ]
+}

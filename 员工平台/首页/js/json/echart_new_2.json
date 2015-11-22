@@ -1,0 +1,27 @@
+{
+  "widgetInstId": "123",
+  "widgetTypeId": "simpleList",
+  "title": "重点科目监控",
+  "more": "http://www.jd.com",
+  "select":["科目3","科目4"],
+  "data":{
+      "xAxis" : [
+        {
+          "type" : "value"
+        }
+      ],
+      "yAxis" : [
+        {
+          "type" : "category",
+          "data" : ["1号大区","2号大区","3号大区","4号大区","5号大区","6号大区","7号大区","8号大区","9号大区","10号大区"]
+        }
+      ],
+      "series" : [
+        {
+          "name":"财报",
+          "type":"bar",
+          "data":[2000, 3000,4000, 5123, 4562, 6515, 4521, 4521, 4521, 6541]
+        }
+      ]
+  }
+}

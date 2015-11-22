@@ -1,0 +1,52 @@
+{
+  "widgetInstId": "123",
+  "widgetTypeId": "simpleList",
+  "title": "常用菜单",
+  "list":
+  [
+    {
+      "href":"http://XXXX.do",
+      "title":"请假申请111"
+    },
+    {
+      "href":"http://XXXX.do",
+      "title":"调班申请"
+    },
+    {
+      "href":"http://XXXX.do",
+      "title":"考勤异常"
+    },
+    {
+      "href":"http://XXXX.do",
+      "title":"外出申请"
+    },
+    {
+      "href":"http://XXXX.do",
+      "title":"加班申请"
+    },
+    {
+      "href":"http://XXXX.do",
+      "title":"立项申请"
+    }
+  ,
+    {
+      "href":"http://XXXX.do",
+      "title":"立项申请"
+    }
+  ,
+    {
+      "href":"http://XXXX.do",
+      "title":"立项申请"
+    }
+  ,
+    {
+      "href":"http://XXXX.do",
+      "title":"立项申请"
+    }
+  ,
+    {
+      "href":"http://XXXX.do",
+      "title":"立项申请"
+    }
+  ]
+}
