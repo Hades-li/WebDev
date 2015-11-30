@@ -1,5 +1,12 @@
 //变量
-
+//左侧组件编辑栏
+$edit-bg:#333740;//背景色
+$edit-front-c:#393d48;//模块前景色
+$edit-front-c-hover:#434853;//组建图标单元hover色
+$edit-title-c:#c6cddc;//标题字体色
+$edit-dt-c:#8f95a3;//dt标题字体色
+$edit-ico-c:#968b81;//图标字体色
+$edit-ico-c-hover:#e7b78a;//图标字体hover色
 //组件
 .lg-btn{display:inline-block;width:88px;height:38px;border:1px solid;line-height:38px;font-size:14px;font-weight:700;text-align:center;border-radius:2px;}
 .normal-tr{
@@ -18,10 +25,10 @@
     float:left;margin-top:12px;margin-left:15px;line-height:30px;font-size:20px;
   }
   .sw-btn{
-    position:relative;float:left;display:block;margin-left:33px;width:110px;padding-left:20px;height:60px;line-height:60px;cursor:pointer;
-    em{display:inline-block;width:10px;height:6px;}
+    position:relative;float:left;display:block;width:175px;margin-left:33px;padding-left:20px;height:60px;line-height:60px;cursor:pointer;
+    em{display:inline-block;width:10px;height:6px;margin:0 10px;}
     ul{
-      display:none;position:absolute;left:0;top:60px;width:130px;padding-bottom:10px;z-index:5000;
+      display:none;position:absolute;left:0;top:60px;width:100%;padding-bottom:10px;z-index:5000;
       li a{display:block;height:30px;line-height:30px;padding-left:20px;}
     }
     &:hover ul{display:block;}
@@ -36,7 +43,7 @@
       em{position:absolute;left:28px;top:7px;display:inline-block;width:22px;height:18px;line-height:18px;text-align:center}
     }
     .head-btn{
-      position:relative;display:inline-block;float:right;width:117px;height:60px;padding-left:13px;margin-left:40px;cursor:pointer;
+      position:relative;display:inline-block;float:right;width:117px;height:60px;padding-left:13px;margin-left:10px;cursor:pointer;
       img{width:30px;height:30px;margin-right:8px;border-radius:50%;vertical-align:middle;}
       em{display:inline-block;width:10px;height:6px;}
       ul{
@@ -66,7 +73,7 @@
   }
   //组件栏
   .editor-wrap{
-    position:absolute;left:0;top:0;width:200px;height:100%;overflow-y:auto;overflow-x:hidden;transition:left 300ms;
+    position:absolute;left:-200px;top:0;width:200px;height:100%;overflow-y:auto;overflow-x:hidden;transition:left 300ms;
     h1{
       height:50px;padding-left:10px;line-height:50px;font-size:14px;font-family:"MicroSoft Yahei";
       a{float:right;display:block;width:10px;height:10px;margin-top:20px;margin-right:12px;}
@@ -102,15 +109,50 @@
 }
 
 .widget{
-  position:relative;float:left;display:block;width:66px;height:80px;margin-right:1px;margin-bottom:1px;text-align:center;
-  em{display:inline-block;width:24px;height:24px;margin-top:17px;}
+  position:relative;float:left;display:block;width:94px;height:80px;margin-right:1px;margin-bottom:1px;text-align:center;
+  img{display:inline-block;width:24px;height:24px;margin-top:17px;margin-bottom:10px;vertical-align: top;}
+  .sec-img{display: none;}
+  &:hover{
+    img{display: none;}
+    .sec-img{display: inline-block;}
+  }
   p{padding:0 9px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
   i{display:none;position:absolute;top:2px;right:2px;width:16px;height:16px;}
   &.used{
+    cursor: default;
     i{display:block;}
+    &:hover{
+      img{display: inline-block;}
+      .sec-img{display: none;}
+    }
   }
 }
-
+.widget{
+  background-color:#393d48;
+  p{color:#968b81;}
+  i{background:url(images/theme-yellow/ui.png) -37px -412px no-repeat}
+  &:hover{
+    background-color:#434853;
+    p{color:#e7b78a;}
+  }
+  &.used:hover {
+    background-color:#393d48;
+    p{color:#968b81;}
+  }
+}
+.editor-wrap{
+  background-color:$edit-bg;
+  h1{
+    color:$edit-title-c;background-color:$edit-front-c-hover;
+    a{
+      background:url(images/theme-yellow/ui.png) -185px -115px no-repeat;
+      &:hover{background-position:-207px -115px}
+    }
+  }
+  dl{
+    dt{color:$edit-dt-c;}
+  }
+}
 //右侧区域
 .r-mn{
   float:right;width:100%;height:100%;margin-left:-200px;transition:margin 300ms;
@@ -267,6 +309,7 @@
 //====首页====
 //  容器
 .mods-contain{
+  min-height:900px;
   &>li{
     box-sizing:border-box;border:1px dashed;
     overflow: hidden;
@@ -275,12 +318,12 @@
       em{display:inline-block;width:19px;height:19px;margin-right:5px;vertical-align:middle}
     }
     .move-btn{
-      position:absolute;left:50%;top:0;margin-left:-50px;display:block;width:100px;height:40px;line-height:40px;text-align:center;z-index:50;
-      em{display:none;width:14px;height:14px;background-color:#333;vertical-align:middle}
-      &:hover em{display:inline-block;}
+      display:none;position:absolute;left:50%;top:30px;margin-left:-25px;width:50px;height:40px;line-height:40px;text-align:center;z-index:50;
+      em{display:inline-block;width:14px;height:14px;background-color:#333;vertical-align:middle}
     }
+    &:hover .move-btn{display:block;}
     .addDel{
-      display:none;box-sizing:content-box;position:absolute;right:0;top:0;border-width:0 0 1px 1px;border-style:solid;z-index: 99;
+      display:none;box-sizing:content-box;position:absolute;right:10px;top:10px;border-width:1px;border-style:solid;z-index: 99;
       .delBtn{
         display:block;width:18px;height:18px;
       }
@@ -315,6 +358,7 @@
     }
   }
 }
+
 //组件-查询表格
 .query-table,.bar-x{
   padding:20px;
@@ -335,3 +379,23 @@
   }
 }
 
+//加载动画
+.load-wrap{
+  position:absolute;left:0;top:0;width:100%;height:100%;z-index:100;
+  &>div{
+    position:absolute;left:0;right:0;top:0;bottom:0;width:60px;height:50px;margin:auto;text-align:center;
+    p{font:14px "MicroSoft Yahei"}
+  }
+}
+
+//加载失败动画
+.load-err{
+  position:absolute;left:0;top:0;width:100%;height:100%;z-index:100;background:#fffffc;z-index:90;
+  &>div{
+    position:absolute;left:0;right:0;top:0;bottom:0;width:120px;height:60px;margin:auto;text-align:center;
+    p{padding-bottom:10px;font-family:"MicroSoft Yahei";}
+  }
+}
+
+//特殊处理
+.beforeRender{opacity:0 !important;display:block !important;}

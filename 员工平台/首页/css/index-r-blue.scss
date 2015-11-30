@@ -29,7 +29,9 @@
   }
 }
 /*学习成长*/
-.daydayup{
+.m-daydayup,
+.m-dbrw,
+.m-wddb{
   li{
     border-bottom: 1px dashed #dde4eb;
   }
@@ -83,6 +85,7 @@
       }
     }
   }
+
 }
 
 .index-pop{
@@ -113,13 +116,13 @@
 }
 #pop3{
   .tab-btn{
-    border: 1px solid #f7ba4f;
+    border: 1px solid #72aef7;
     margin-bottom: 20px;
     a{
-      color: #f7ba4f;
+      color: #72aef7;
       &.active{
         color: #FFF;
-        background: #f7ba4f;
+        background: #72aef7;
       }
     }
   }
@@ -139,9 +142,31 @@
             &:hover{
               color: #995b31;
             }
+            em {
+              background: url(images/theme-blue/ui.png) no-repeat -11px -412px;
+            }
+            &.has-add {
+              &:hover {
+                em{
+                  background: url(images/theme-blue/ui.png) no-repeat -99px -412px;
+                }
+              }
+              em {
+                background: url(images/theme-blue/ui.png) no-repeat -37px -412px;
+              }
+
+            }
           }
         }
       }
     }
+  }
+}
+.mods-contain{
+  background: #dae5f7;
+}
+.r-container{
+  .reload-pnf{
+    background: #dae5f7;
   }
 }

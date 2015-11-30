@@ -87,6 +87,7 @@ $index_edit_bg:#fff7d1;//编辑框的背景色
   //组件容器
 $mw-b-c:#ded8c8;//边框颜色
 $mw-title-b-c:#ffa024;//标题底部边框色
+$mw-c-hover:#ed6d00;//文字hover色
 
 //组件-查询表格
 $qt-b-c:#ded8c8;//表格边框颜色
@@ -196,68 +197,7 @@ $qt-t-c-hover:#fa761e;//表格字体超链接颜色
   }
 }
 //组件栏
-.editor-wrap{
-  background-color:$edit-bg;
-  h1{
-    color:$edit-title-c;background-color:$edit-front-c-hover;
-    a{
-      background:url(images/theme-yellow/ui.png) -185px -115px no-repeat;
-      &:hover{background-position:-207px -115px}
-    }
-  }
-  dl{
-    dt{color:$edit-dt-c;}
-  }
-}
-.widget{
-  background-color:$edit-front-c;
-  em{
-    background:url(images/theme-yellow/ui.png) no-repeat;
-    &.xuexi{background-position:-20px -158px;}
-    &.daiban{background-position:-54px -158px;}
-    &.daiyue{background-position:-88px -158px;}
-    &.gonggao{background-position:-122px -158px;}
-    &.fenxi{background-position:-156px -158px;}
-    &.guanli{background-position:-190px -158px;}
-    &.caidan{background-position:-224px -158px;}
-    &.xitong{background-position:-258px -158px;}
-    &.zizhu{background-position:-292px -158px;}
-    &.tongzhi{background-position:-122px -158px;}
-    &.fawen{background-position: -54px -459px;}
-    &.kemu{background-position: -88px -459px;}
-    &.tongji{background-position: -122px -459px;}
-    &.renwu{background-position: -156px -459px;}
-    &.renshi{background-position:-190px -459px;}
-    &.shenghuo{background-position:-224px -459px;}
 
-  }
-  p{color:$edit-ico-c;}
-  i{background:url(images/theme-yellow/ui.png) -37px -412px no-repeat}
-  &:hover{
-    background-color:$edit-front-c-hover;
-    em{
-      &.xuexi{background-position:-20px -208px;}
-      &.daiban{background-position:-54px -208px;}
-      &.daiyue{background-position:-88px -208px;}
-      &.gonggao{background-position:-122px -208px;}
-      &.fenxi{background-position:-156px -208px;}
-      &.guanli{background-position:-190px -208px;}
-      &.caidan{background-position:-224px -208px;}
-      &.xitong{background-position:-258px -208px;}
-      &.zizhu{background-position:-292px -208px;}
-      &.tongzhi{background-position:-122px -208px;}
-      &.fawen{background-position: -54px -501px;}
-      &.kemu{background-position: -88px -501px;}
-      &.tongji{background-position: -122px -501px;}
-      &.renwu{background-position: -156px -501px;}
-      &.renshi{background-position:-190px -501px;}
-      &.shenghuo{background-position:-224px -459px;}
-
-    }
-    p{color:$edit-ico-c-hover;}
-  }
-
-}
 
 .l-tools-bottom{
   background-color:$l-tools-bottom-c;
@@ -267,9 +207,9 @@ $qt-t-c-hover:#fa761e;//表格字体超链接颜色
     &.fold-btn em{background-position:-60px -110px}
     &.review-btn em{background-position:-227px -110px}
     &.save-btn em{background-position:-285px -110px}
-    &.tools-btn:hover em{background-position:-100px -110px}
-    &.review-btn:hover em{background-position: -257px -110px;}
-    &.save-btn:hover em{background-position:-311px -110px;}
+    &.tools-btn:hover em,&.tools-btn.active em{background-position:-100px -110px}
+    &.review-btn:hover em,&.review-btn.active em{background-position: -257px -110px;}
+    &.save-btn:hover em,&.save-btn.active em{background-position:-311px -110px;}
     &.fold-btn:hover em{background-position:-140px -110px}
     &:hover{background-color:$l-bg-hover;}
   }
@@ -383,6 +323,7 @@ $qt-t-c-hover:#fa761e;//表格字体超链接颜色
           background:url(images/theme-yellow/ui.png) -181px -317px no-repeat;
           &:hover{background-position:-181-12px -317px}
         }
+        &:hover span{color:$mw-c-hover;}
       }
     }
   }
@@ -397,4 +338,10 @@ $qt-t-c-hover:#fa761e;//表格字体超链接颜色
     td,td a{color:$qt-t-c;}
     td a:hover{color:$qt-t-c-hover;}
   }
+}
+
+//加载动画
+.load-wrap{
+  background-color:$index_ct_bg;
+  p{color:#999}
 }

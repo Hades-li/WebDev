@@ -11,7 +11,25 @@
       "category":"财务任务",
       "type":"预收账款-已收款未发货",
       "owner":"自己的",
-      "time":"18：00"
+      "time":""
+    },
+    {
+      "date": "2015-10-28",
+      "title": "尴尬的风格 大范甘迪使法国电饭锅电饭锅电饭锅刚刚告诉对方士大夫士大夫士大夫但是士大夫",
+      "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587422",
+      "category":"财务任务",
+      "type":"预收账款-已收款未发货",
+      "owner":"自己的",
+      "time":""
+    },
+    {
+      "date": "2015-10-28",
+      "title": "尴尬的风格 大范甘迪使法国电饭锅电饭锅电饭锅",
+      "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587422",
+      "category":"财务任务",
+      "type":"预收账款-已收款未发货",
+      "owner":"自己的人",
+      "time":""
     },
     {
       "date": "2015-10-28",
@@ -20,7 +38,7 @@
       "category":"财务任务",
       "type":"预收账款-已收款未发货",
       "owner":"自己的",
-      "time":"18：00"
+      "time":""
     },
     {
       "date": "2015-10-28",
@@ -29,25 +47,7 @@
       "category":"财务任务",
       "type":"预收账款-已收款未发货",
       "owner":"自己的",
-      "time":"18：00"
-    },
-    {
-      "date": "2015-10-28",
-      "title": "尴尬的风格 大范甘迪使法国电饭锅电饭锅电饭锅",
-      "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587422",
-      "category":"财务任务",
-      "type":"预收账款-已收款未发货",
-      "owner":"自己的",
-      "time":"18：00"
-    },
-    {
-      "date": "2015-10-28",
-      "title": "尴尬的风格 大范甘迪使法国电饭锅电饭锅电饭锅",
-      "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587422",
-      "category":"财务任务",
-      "type":"预收账款-已收款未发货",
-      "owner":"自己的",
-      "time":"18：00"
+      "time":""
     }
   ]
 }

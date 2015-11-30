@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>部门日志添加</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/soa.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css">
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container">
+    <div class="news-detail">
+        <h1>依托O2O优势 苏宁成功中标国家电网办公采购项目</h1>
+        <p class="time">
+            15-04-04  17:14:28
+        </p>
+        <div class="news-content">
+            <img src="temp/detail-pic.jpg" alt=""/>
+            <div class="news-p">
+                <p>
+                    经过多轮投标角逐，集团从36家供应商中
+                    脱颖而出，成功中标国家电网2015年度办公类
+                    物质竞争性谈判采购项目，项目总标的约22亿
+                    元。
+                </p>
+                <p>
+                    国家电网是中国最大的电网企业，经营区
+                    域覆盖全国26个省市，供电人口超过11亿人，
+                    集团下设直属38家企业，公司员工总量186万
+                    人。集团与国网的合作最早可追溯到2007年，
+                    当年集团成为国网江苏公司办公设备服务商，
+                    为全省近百个下属单位提供电器设备、办公用
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+<script>
+    $(function () {
+
+    });
+</script>
+</body>
+</html>

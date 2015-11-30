@@ -16,7 +16,9 @@
   border-left: 8px solid #ffa024; }
 
 /*学习成长*/
-.daydayup li {
+.m-daydayup li,
+.m-dbrw li,
+.m-wddb li {
   border-bottom: 1px dashed #dde4eb; }
 
 .info-tips-alert {
@@ -62,13 +64,13 @@
   background: url(images/theme-blue/ui.png) no-repeat -99px -412px; }
 
 #pop3 .tab-btn {
-  border: 1px solid #f7ba4f;
+  border: 1px solid #72aef7;
   margin-bottom: 20px; }
   #pop3 .tab-btn a {
-    color: #f7ba4f; }
+    color: #72aef7; }
     #pop3 .tab-btn a.active {
       color: #FFF;
-      background: #f7ba4f; }
+      background: #72aef7; }
 #pop3 .search-resault table tr th {
   background: #ebf6ff;
   border: 1px solid #ced7e0; }
@@ -79,3 +81,15 @@
     color: #007ebd; }
     #pop3 .search-resault table tr td a:hover {
       color: #995b31; }
+    #pop3 .search-resault table tr td a em {
+      background: url(images/theme-blue/ui.png) no-repeat -11px -412px; }
+    #pop3 .search-resault table tr td a.has-add:hover em {
+      background: url(images/theme-blue/ui.png) no-repeat -99px -412px; }
+    #pop3 .search-resault table tr td a.has-add em {
+      background: url(images/theme-blue/ui.png) no-repeat -37px -412px; }
+
+.mods-contain {
+  background: #dae5f7; }
+
+.r-container .reload-pnf {
+  background: #dae5f7; }

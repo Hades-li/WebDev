@@ -5,8 +5,10 @@ define([
     'jquery',
     'jquery-ui',
     'backbone',
-    'underscore'
-], function ($,jquery_ui,Backbone) {
+    'underscore',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui,Backbone,_,loadAM,URL) {
 
     var Query_table_model = Backbone.Model.extend({
         defaults:{
@@ -36,9 +38,9 @@ define([
 
         },
         //读取数据
-        queryData: function (callback,zoom,time) {
+        queryData: function (callback_done,callback_err,zoom,time) {
             var that = this;
-            var url ="js/json/table.json";
+            var url = URL;
             var dataId = this.get("dataId");
                 $.ajax({
                 type: "get",
@@ -49,10 +51,14 @@ define([
                     that.set("title",data["content"].title) ;
                     that.set("more",data["content"].more);
                     that.set("data",data["content"].data);
-                    if(callback){
-                        callback();
+                    if(callback_done){
+                        callback_done();
                     }
-            })
+            }).fail(function () {
+                    if(callback_err){
+                        callback_err();
+                    }
+                })
         }
     });
     var Query_table_view = Backbone.View.extend({
@@ -113,13 +119,21 @@ define([
         className:"query-table",
         initialize: function () {
             var that = this;
-            this.model.queryData(function () {
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.model.queryData(function () {
+                    that.model.get("parent").render();
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                }, function () {
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
             this.model.on("change", this.render, this);
         },
         render: function () {
-            console.log("渲染查询表格");
+            //console.log("渲染查询表格");
             this.$el.html(this.template({
                 zoom:this.model.get("data").quanguo.zoom,
                 items:this.model.get("data").others
@@ -144,16 +158,15 @@ define([
         queryEvent: function () {
             var zoom = this.$el.find("#input1").val();
             var time = this.$el.find("#input2").val();
+            var that = this;
+            loadAM.loadingAnimation(this.$el.parents(".gs-w"),true);
             this.model.queryData(function () {
-
+            loadAM.loadingAnimation(this.$el.parents(".gs-w"),false);
+            }, function () {
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
             },zoom,time);
-        },
-        loadData:function (url) {
-            return $.ajax({
-                type: "post",
-                url: url,
-                dataType: "json"
-            });
         }
     });
     //创建对象

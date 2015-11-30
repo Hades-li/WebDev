@@ -23,7 +23,9 @@
   border-left: 8px solid #6ac150; }
 
 /*学习成长*/
-.daydayup li {
+.m-daydayup li,
+.m-dbrw li,
+.m-wddb li {
   border-bottom: 1px dashed #ebe7dd; }
 
 .info-tips-alert {
@@ -56,8 +58,6 @@
   background-position: -34px -308px; }
   .custom-com .roll .next:hover {
     background-position: -94px -308px; }
-.custom-com ul li a em {
-  background: url(images/theme-yellow/ui.png) no-repeat -99px -412px; }
 
 .index-pop .pop-contain li a em {
   background: url(images/theme-yellow/ui.png) no-repeat -11px -412px; }
@@ -94,11 +94,9 @@
       background: url(images/theme-yellow/ui.png) no-repeat -99px -412px; }
     #pop3 .search-resault table tr td a.has-add em {
       background: url(images/theme-yellow/ui.png) no-repeat -37px -412px; }
-#pop3 .usual-menu li a.has-add em {
-  right: 0;
-  top: 0;
-  background: none; }
-#pop3 .usual-menu li a.has-add:hover em {
-  background: url(images/theme-yellow/ui.png) no-repeat -99px -412px; }
 
-/*# sourceMappingURL=index-r-yellow.css.map */
+.mods-contain {
+  background: #e4e2d7; }
+
+.r-container .reload-pnf {
+  background: #edebde; }

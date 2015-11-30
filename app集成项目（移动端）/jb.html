@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>江北线</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/soa.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css">
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container">
+    <div class="regular-bus">
+        <div class="">
+            <h2>江北线</h2>
+            <a href="#" class="h2-right-btn bus-map"><em></em>地图</a>
+            <div class="b-line"></div>
+            <div class="bus-table">
+                <table>
+                    <tr>
+                        <th class="fst-th"></th>
+                        <th  width="40%">站点</th>
+                        <th  width="25%">周一至周五</th>
+                        <th  width="25%">周末及节假日</th>
+                    </tr>
+                    <tr>
+                        <td><div class="state"><em></em><span></span></div></td>
+                        <td>天润城售楼处
+                            (大桥北路与柳州
+                            路的交叉路口)</td>
+                        <td>7:29</td>
+                        <td>7:29</td>
+                    </tr>
+                    <tr>
+                        <td><div class="state"><em></em><span></span></div></td>
+                        <td>天润城售楼处
+                            (大桥北路与柳州
+                            路的交叉路口)</td>
+                        <td>7:29</td>
+                        <td>7:29</td>
+                    </tr>
+                    <tr>
+                        <td><div class="state"><em></em><span></span></div></td>
+                        <td>天润城售楼处
+                            (大桥北路与柳州
+                            路的交叉路口)</td>
+                        <td>7:29</td>
+                        <td>7:29</td>
+                    </tr>
+                    <tr>
+                        <td><div class="state"><em></em><span></span></div></td>
+                        <td>天润城售楼处
+                            (大桥北路与柳州
+                            路的交叉路口)</td>
+                        <td>7:29</td>
+                        <td>7:29</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+<script>
+    $(function () {
+
+    });
+</script>
+</body>
+</html>

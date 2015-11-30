@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <style rel="stylesheet" type="text/css">
+        h1{font:28px "microsoft yahei";padding-bottom: 10px;}
+        .wrap{border-bottom:1px solid #333;padding:10px 0 10px 10px;}
+    </style>
+    <title>组件</title>
+</head>
+<body style="background-color:#f3f3f3;">
+    <div class="wrap clearfix">
+        <h1>输入框</h1>
+        <div class="clearfix">
+            <label class="form-label fl">你多少个黄色的：</label>
+            <input class="form-input fl w228" type="text" /><br/><br/>
+        </div>
+        <input class="form-input w228" type="text" /><br/><br/>
+        <select class="form-sel w236" name="" id="ss" >
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+            <option>203124</option>
+        </select>
+    </div>
+    <div class="wrap">
+        <h1>按钮</h1>
+        <a class="defaultBtn w103" href="javascript:;"><span>宽度103</span></a><br/><br/>
+        <a class="defaultBtn w238" href="javascript:;"><span>宽度240</span></a><br/><br/>
+        <a class="handle open" href="javascript:;"></a><br/><!--块级元素-->
+        <a class="handle close" href="javascript:;"></a><br/><!--块级元素-->
+        <a class="backBtn" href="javascript:;"><span>返回</span></a><br/><br/>
+        <a class="nextBtn" href="javascript:;"><span>下一页</span></a><br/><br/>
+        <a class="prevBtn" href="javascript:;"><span>上一页</span></a><br/><br/>
+        <a class="narrowBtn w238" href="javascript:;"><span>宽度240</span></a>
+    </div>
+    <div class="wrap">
+        <h1>标签</h1>
+        <label class="upDownLabel">
+            <span class="cn">流程：</span>
+            <span class="en">procedures</span>
+        </label>
+        <br/>
+        <h3 class="stTitleWrap-big">
+            <label class="upDownTitleH1">
+                <span class="cn">重置密码</span>
+                <span class="en">Reset password</span>
+            </label>
+        </h3>
+    </div>
+    <div class="wrap">
+        <h1>箭头</h1>
+        <i class="sn-arrow-up"></i>
+        <i class="sn-arrow-down"></i>
+        <i class="sn-arrow-left"></i>
+        <i class="sn-arrow-right"></i>
+    </div>
+    <div>
+        <h1>分页</h1>
+        <div class="sn-page">
+            <span class="sn-page-prev"><i class="sn-arrow-right"></i><span>上一页</span></span>
+            <a href="#" class="sn-page-prev"><i class="sn-arrow-right"></i><span>上一页</span></a>
+            <a href="#" class="sn-page-item">1</a>
+            <a href="#" class="sn-page-item sn-page-current">2</a>
+            <a href="#" class="sn-page-item">3</a>
+            <a href="#" class="sn-page-item">4</a>
+            <a href="#" class="sn-page-item">5</a>
+            <span class="sn-page-ellipsis">...</span>
+            <a href="#" class="sn-page-item">50</a>
+            <a href="#" class="sn-page-next"><span>下一页</span><i class="sn-arrow-left"></i></a>
+           <!-- <span class="sn-page-info">向第</span>
+            <span class="sn-page-which"><input name="some_name" value="6" type="text"></span>
+            <span class="sn-page-info">页</span>
+            <a class="sn-page-info sn-page-goto" href="#">跳转</a>-->
+            <!--<span class="sn-page-bold">2/50</span>-->
+        </div>
+    </div>
+    <div>
+        <h1>时间框</h1>
+        <input class="datePicker" />
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</html>

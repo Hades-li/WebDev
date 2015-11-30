@@ -21,7 +21,7 @@ table{border-spacing:0;border-collapse:collapse;}
 .db{display:block;}
 .dib{display:inline-block!important;}
 .wb{word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;}
-.of{overflow:hidden;word-wrap:break-word;word-break:break-all;white-space:nowrap;text-overflow:ellipsis;}
+.of{overflow:hidden;word-break:break-all;white-space:nowrap;text-overflow:ellipsis;}
 .ofh{overflow: hidden;}
 .pa{position: absolute;}
 .pr{position:relative;}
@@ -75,6 +75,7 @@ table{border-spacing:0;border-collapse:collapse;}
 .w75pc{width:75%}
 .w-auto{width:auto!important}
 .min1200{min-width:1200px}
+.min1360{min-width:1360px}
 .vhide{visibility:hidden;}
 /* 分页 */
 .snPages{background:#FFF; padding-bottom:10px;text-align:right;}
@@ -109,7 +110,7 @@ b.close{ position:absolute; display:block; height:12px; width:12px; cursor:point
 /*弹窗*/
 .normal-pop{padding-top:5px;}
 .normal-pop .pop-wrap{margin:0 5px 5px;}
-.normal-pop .pop-contain{padding:50px;}
+.normal-pop .pop-contain{padding:50px;max-height: 500px;overflow-x: hidden;overflow-y:auto;}
 .normal-pop b.close{ height:12px; width:12px; right:15px; top:15px; background:url(images/close-x.png) no-repeat 0 0;}
 
 /*上传*/
@@ -315,6 +316,11 @@ b.close{ position:absolute; display:block; height:12px; width:12px; cursor:point
 .calendar-time .plan .bar{cursor:pointer;position:absolute;left:0;top:-5px;width:17px;height:13px;background:url(images/calendarIcon.png) no-repeat;}
 .calendar-time em.confirm-btn{float:left;clear:left;cursor:pointer;margin-top:10px;width:48px;height:24px;text-align:center;line-height:24px;border-right:1px solid #c0c0c0;border-bottom:1px solid #c0c0c0;border-left:1px solid #dfdfdf;border-top:1px solid #dfdfdf;color:#333;letter-spacing:5px;}
 .calendar select{border:1px solid #DEDEDE;background:#FFF;color:#000;}
+
+
+/*页面提示*/
+.tip{display:inline-block;vertical-align:middle;margin-right:5px;width:24px;height:24px;background:url(images/tipIcon.png) no-repeat;}
+.tip-warning{background-position:-155px -140px;}
 
 
 

@@ -1,76 +1,68 @@
 {
   "serialization": [
     {
-      "wid_id": ["q","w"],
+      "wid_id": "zdkmtj",
       "type_id": "kmtj",
       "col": 1,
       "row": 1,
       "size_x": 2,
-      "size_y": 3
+      "size_y": 10
     },
     {
-      "wid_id": "w",
-      "type_id": "kmtj",
-      "col": 3,
-      "row": 1,
-      "size_x": 2,
-      "size_y": 3
-    },
-    {
-      "wid_id": "e",
-      "type_id": "rwtj",
+      "wid_id": "dbrw",
+      "type_id": "dbrw",
       "col": 1,
-      "row": 4,
+      "row": 11,
       "size_x": 4,
-      "size_y": 3
+      "size_y": 7
     },
     {
-      "wid_id": "r",
+      "wid_id": ["tzgg","fwgg"],
       "type_id": ["wddb","wddb"],
       "col": 1,
-      "row": 7,
+      "row": 18,
       "size_x": 3,
-      "size_y": 3
+      "size_y": 8
     },
     {
-      "wid_id": "t",
+      "wid_id": "cycd",
       "type_id": "cycd",
       "col": 4,
-      "row": 7,
+      "row": 18,
       "size_x": 1,
-      "size_y": 3
+      "size_y": 8
     },
     {
-      "wid_id": "t",
+      "wid_id": "xxcz",
       "type_id": "xxcz",
       "col": 1,
-      "row": 10,
+      "row": 26,
       "size_x": 3,
-      "size_y": 3
+      "size_y": 8
     },
     {
-      "wid_id": "t",
+      "wid_id": ["jcrs","ygsh"],
       "type_id": ["rssh","rssh"],
       "col": 4,
-      "row": 10,
+      "row": 26,
       "size_x": 1,
-      "size_y": 3
+      "size_y": 8
     },
     {
-      "wid_id": "t",
+      "wid_id":["wddy","wddb"],
       "type_id": ["wddb","wddb"],
       "col": 1,
-      "row": 13,
+      "row": 34,
       "size_x": 3,
-      "size_y": 3
+      "size_y": 9
     },
     {
-      "wid_id": "y",
+      "wid_id": "cyxt",
       "type_id": "cyxt",
       "col": 4,
-      "row": 13,
+      "row": 34,
       "size_x": 1,
-      "size_y": 3
+      "size_y": 9
     }
   ]
 }

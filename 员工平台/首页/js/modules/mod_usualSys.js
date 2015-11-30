@@ -6,39 +6,15 @@ define([
     'jquery-ui',
     'backbone',
     'underscore',
-    'template-loader'
-], function ($,jquery_ui, Backbone, _, tpl) {
+    'template-loader',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui, Backbone, _, tpl,loadAM,URL) {
 
     var usualSys_model = Backbone.Model.extend({
         defaults:{
             title:"XXX",
-            list:
-                [
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"请假申请22"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"调班申请"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"考勤异常"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"外出申请"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"加班申请"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"立项申请"
-                    }
-                ],
+            list: [],
             parent:null
         }
     });
@@ -49,16 +25,20 @@ define([
         initialize: function () {
             var that = this;
             this.template = tpl["usual-menu"];
-
-            this.loadData("js/json/usualSys.json").done(function (data) {
-
-            that.model.set("list",data["list"]) ;
-            that.model.set("title",data["title"]) ;
-
-            that.model.on("change", that.render, that);
-            that.render();
-            that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                    that.model.set("list",data["list"]) ;
+                    that.model.set("title",data["title"]);
+                    that.model.get("parent").render();
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                }).fail(function () {
+                        loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
+            this.model.on("change", this.render,this);
         },
         render: function () {
 			var html = this.template({
@@ -79,10 +59,25 @@ define([
         getMore: function () {
             return this.model.get("more");
         },
-        loadData:function (url) {
+        queryEvent: function () {
+            var that = this;
+            loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+            that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                that.model.set("list",data["list"]) ;
+                that.model.set("title",data["title"]) ;
+                that.model.get("parent").render();
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+            }).fail(function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
+            });
+        },
+        loadData:function (url,dataId) {
             return $.ajax({
                 type: "post",
                 url: url,
+                data:{dataId:dataId},
                 dataType: "json"
             });
         }
@@ -91,13 +86,12 @@ define([
     var create = function (dataId,parent) {
         var qt_view = new usualSys_view({
             model:new usualSys_model({
-                parent:parent
+                parent:parent,
+                dataId:dataId
             })
         });
         return qt_view;
     };
-
-
     return{
         create:create
     }

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>弹窗</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/soa.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css">
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+
+<a href="javascript:" class="pop-btn-0" >提示框</a><br/>
+<a href="javascript:" class="pop-btn-1">报错提示框</a><br/>
+<a href="javascript:" class="pop-btn-2">带“好”字提示框</a><br/>
+<a href="javascript:" class="pop-btn-3">带内容的提示框</a><br/>
+<a href="javascript:" class="pop-btn-4">流程处理1</a><br/>
+<a href="javascript:" class="pop-btn-5">流程处理2</a><br/>
+<div class="pop-bg">
+    <!--灰度层-->
+    <div class="gray"></div>
+    <!--提示框-->
+    <div class="popup mt10 pop-show">
+        <div class="notice-text">
+            请输入XXX豆腐干地方都是非官方的电饭锅电饭锅地方急吼吼立刻就很快冷静后立刻就会
+        </div>
+    </div>
+    <!--报错提示框-->
+    <div class="popup mt10 pop-error">
+        <div class="notice-text error">
+            请输入XXX国家领导反馈速度发货数量的咖啡机收到了；看风景是的；看风景
+        </div>
+    </div>
+    <!--带“好”按钮提示框-->
+    <div class="popup mt10 pop-ok">
+        <div class="notice-doc">
+            该流程暂不支持在移动端审批,
+            请到豆芽电脑端或者SOA进行操作
+        </div>
+        <div class="pop-bottom">
+            <a class="single-btn close" href="javascript:">好</a>
+        </div>
+    </div>
+    <!--带标题，内容，确认，取消的提示框-->
+    <div class="popup mt10 pop-other">
+        <div class="pop-head">
+            流程处理
+        </div>
+        <div class="pop-content">
+            <div class="dish-list">
+                <ul>
+                    <li class="clearfix">
+                        <div class="radio-skin active"><input type="radio" id="d1" name="dish"/></div>
+                        <label for="d1">梅菜烧肉</label>
+                    </li>
+                    <li class="clearfix">
+                        <div class="radio-skin"><input type="radio" id="d2" name="dish"/></div>
+                        <label for="d2">梅菜烧肉</label>
+                    </li>
+                    <li class="clearfix">
+                        <div class="radio-skin"><input type="radio" id="d3" name="dish"/></div>
+                        <label for="d3">梅菜烧肉</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="pop-submit">
+                <b>提交给：</b>
+                <span class="name">赵珍</span>
+                <span class="post">产品总监助理</span>
+            </div>
+            <div class="apply-inf-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <p class="title nofl">审批意见</p>
+                        <div class="tr-wrap">
+                            <textarea placeholder="请填写审批意见"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pop-bottom">
+            <a class="left-btn" href="javascript:">确认</a>
+            <a class="right-btn" href="javascript:">取消</a>
+        </div>
+    </div>
+    <!--流程处理1-->
+    <div class="popup mt10 pop-4">
+        <div class="pop-head">
+            流程处理
+        </div>
+        <div class="pop-content">
+            <div class="pop-submit">
+                <b>提交给：</b>
+                <ul>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍2</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                    <li>
+                        <span class="name">赵珍</span>
+                        <span class="post">产品总监助理</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="apply-inf-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <div class="tr-wrap">
+                            <textarea placeholder="请填写审批意见"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pop-bottom">
+            <a class="left-btn" href="javascript:">确认</a>
+            <a class="right-btn" href="javascript:">取消</a>
+        </div>
+    </div>
+    <!--流程处理2-->
+    <div class="popup mt10 pop-5">
+        <div class="pop-head">
+            流程处理
+        </div>
+        <div class="pop-content">
+            <div class="pop-submit">
+                <b>驳回原因</b>
+                <!--<span class="post">将会缩减</span>-->
+                <select class="pop-sel">
+                    <option value="需求问题">需求大是</option>
+                    <option value="需求问题">需求大是三地警方</option>
+                </select>
+            </div>
+            <div class="pop-submit">
+                <b>提交给：</b>
+                <span class="name">赵珍</span>
+                <span class="post">产品总监助理</span>
+            </div>
+            <div class="apply-inf-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <div class="tr-wrap">
+                            <textarea placeholder="请填写审批意见"></textarea>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pop-bottom">
+            <a class="left-btn pop-btn-0" href="javascript:">确认</a>
+            <a class="right-btn" href="javascript:">取消</a>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/lb.js"></script>
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</body>
+</html>

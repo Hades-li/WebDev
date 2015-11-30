@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>流程待办-请假审批</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/soa.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css"/>
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container project-fabu">
+    <div class="has-tab-wrap">
+        <div class="tab-handle">
+            <ul class="clearfix">
+                <li class="">
+                    <a href="javascript:;" class="active">
+                        基本信息
+                    </a>
+                    <span class="vertical-line"></span>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+                        发布步骤
+                    </a>
+                    <span class="vertical-line"></span>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+
+                        风险分析
+                    </a>
+                    <span class="vertical-line"></span>
+                </li>
+                <li class="">
+                    <a href="javascript:;">
+
+                        办理历史
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="b-line"></div>
+        <div class="tab-container" style="display:block;">
+            <div class="apply-inf-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <p class="title">申请单号</p>
+                        <p class="inf">PRL151012000044</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">项目名称</p>
+                        <p class="inf">xxxxx项目</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="clearfix">
+                        <p class="title">发布级别</p>
+                        <p class="inf">一般</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">发布环境</p>
+                        <p class="inf">生产</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">计划发布时间</p>
+                        <p class="inf">2015-08-04  09:00</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">申请人</p>
+                        <p class="inf">刘陈鹏</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">发布支持人员</p>
+                        <p class="inf">苏波</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">发布审批一级中心</p>
+                        <p class="inf">xxx</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="clearfix">
+                        <p class="title nofl">发布概述</p>
+                        <p class="content">苏宁人登录统计功能改为连接UUQ的方式后引起服务
+                            器连接数异常增多，现发布修复此问题</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-container">
+            2
+        </div>
+        <div class="tab-container">
+            <div class="apply-inf-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <p class="title">DB类型</p>
+                        <p class="inf">xxx,xxx,xxx</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title">是否涉及对象修改操作</p>
+                        <p class="inf">是</p>
+                    </li>
+                    <li class="clearfix">
+                        <p class="title nofl">SQL脚本</p>
+                        <p class="content">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    </li>
+                    <li class="clearfix attention-info">
+                        <p class="content">出于信息安全考虑请到PC端查看相关附件</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="clearfix">
+                        <p class="title nofl">ESB接口</p>
+                        <p class="content">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    </li>
+                    <li class="clearfix attention-info">
+                        <p class="content">出于信息安全考虑请到PC端查看相关附件</p>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="clearfix">
+                        <p class="title nofl">代码包/传输请求号</p>
+                        <p class="content">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-container">
+            4
+        </div>
+    </div>
+</div>
+<div class="pageBottom-btn">
+    <div class="opacity-bg"></div>
+    <a href="javascript:" class="submit">同意</a>
+    <a href="javascript:" class="save">不同意</a>
+</div>
+
+
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+
+</body>
+</html>

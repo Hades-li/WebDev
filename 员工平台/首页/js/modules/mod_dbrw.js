@@ -5,14 +5,16 @@ define([
     'jquery',
     'jquery-ui',
     'backbone',
-    'underscore'
-], function ($,jquery_ui,Backbone) {
+    'underscore',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui,Backbone,_,loadAM,URL) {
 
     var Dbrw_model = Backbone.Model.extend({
         defaults:{
             dataId:undefined,
             parent:undefined,
-            hasTask:true,
+            hasTask:false,
             "title": "XXX",
             "more": "http://www.google.com",
             "list": [
@@ -22,9 +24,9 @@ define([
 
         },
         //读取数据
-        queryData: function (callback,zoom,time) {
+        queryData: function (callback_done,callback_err,zoom,time) {
             var that = this;
-            var url ="js/json/daibanrenwu.json";
+            var url = URL;
             var dataId = this.get("dataId");
                 $.ajax({
                 type: "post",
@@ -35,13 +37,17 @@ define([
                 that.set("title",data["title"]) ;
                 that.set("more",data["more"]);
                 that.set("list",data["list"]);
-                if(that.get("list").length == 0){
+                /*if(that.get("list").length == 0){
                     that.set("hasTask",false);
+                }*/
+                if(callback_done){
+                    callback_done();
                 }
-                if(callback){
-                    callback();
-                }
-            })
+            }).fail(function () {
+                    if(callback_err){
+                        callback_err();
+                    }
+                })
         }
     });
     var Dbrw_view = Backbone.View.extend({
@@ -54,13 +60,13 @@ define([
                 "                    <li class=\"clearfix\">",
                 "                        <p class=\"context\">",
                 "                            <em></em>",
-                "                            <span class=\"cw\"><%= i.category %></span>",
-                "                            <span class=\"ys\"><%= i.type %></span>",
-                "                            <a href=\"<%= i.href %>\"><%= i.title %></a>",
+                //"                            <span class=\"cw\"><%= i.category %></span>",
+                "                            <strong class=\"ys\">[<%= i.type %>]</strong>",
+                "                            <a href=\"<%= i.href %>\" target=\"_blank\" title=\"<%= i.title?i.title:'无数据' %>\"><%= i.title?i.title:'无数据' %></a>",
                 "                        </p>",
                 "                        <p class=\"quantity\">",
-                "                            <i class=\"man mr10\"><%= i.owner %></i>",
-                "                            <i class=\"date mr10\" ><%= i.date %></i>",
+                "                            <i class=\"man mr10\">创建人：<%= i.owner %></i>",
+                "                            <i class=\"date\" ><%= i.date %></i>",
                 "                            <i class=\"time\"><%= i.time %></i>",
                 "                        </p>",
                 "                    </li>",
@@ -69,16 +75,25 @@ define([
                 "            </div>"
             ].join("")
         ),
-        className:"daydayup",
+        className:"m-dbrw",
         initialize: function () {
             var that = this;
-            this.model.queryData(function () {
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.model.queryData(function () {
+                    that.model.get("parent").render();
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                }, function () {
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
+
             this.model.on("change", this.render, this);
         },
         render: function () {
-            console.log("渲染待办任务");
+            //console.log("渲染待办任务");
             this.$el.html(this.template({
                 list:this.model.get("list")
             }));
@@ -105,7 +120,14 @@ define([
         queryEvent: function () {
             var zoom = this.$el.find("#input1").val();
             var time = this.$el.find("#input2").val();
+            var that = this;
+            loadAM.loadingAnimation(this.$el.parents(".gs-w"),true);
             this.model.queryData(function () {
+                loadAM.loadingAnimation(this.$el.parents(".gs-w"),false);
+            }, function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
             },zoom,time);
         }
     });

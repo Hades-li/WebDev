@@ -1,0 +1,179 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>请假申请-年假申请</title>
+    <link href="css/dateTime_css/mobiscroll.animation.css" rel="stylesheet" type="text/css" />
+    <link href="css/dateTime_css/mobiscroll.icons.css" rel="stylesheet" type="text/css" />
+    <link href="css/dateTime_css/mobiscroll.frame.css" rel="stylesheet" type="text/css" />
+    <link href="css/dateTime_css/mobiscroll.frame.ios.css" rel="stylesheet" type="text/css" />
+    <link href="css/dateTime_css/mobiscroll.scroller.css" rel="stylesheet" type="text/css" />
+    <link href="css/dateTime_css/mobiscroll.scroller.ios.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css"/>
+
+    <script src="js/zepto.min.js"></script>
+
+    <script src="js/dateTime_lib/mobiscroll.zepto.js"></script>
+    <script src="js/dateTime_lib/mobiscroll.core.js"></script>
+    <script src="js/dateTime_lib/mobiscroll.frame.js"></script>
+    <script src="js/dateTime_lib/mobiscroll.scroller.js"></script>
+
+    <script src="js/dateTime_lib/mobiscroll.util.datetime.js"></script>
+    <script src="js/dateTime_lib/mobiscroll.datetimebase.js"></script>
+    <script src="js/dateTime_lib/mobiscroll.datetime.js"></script>
+
+    <script src="js/dateTime_lib/mobiscroll.frame.ios.js"></script>
+
+    <script src="js/dateTime_lib/i18n/mobiscroll.i18n.zh.js"></script>
+    <script src="js/dateTime_lib/i18n/mobiscroll.i18n.en-UK.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container">
+    <div class="itp-header">
+        <a href="javascript:;" class="h-return">
+            <b></b>
+            <span>返回</span>
+        </a>
+        <h1>补休申请</h1>
+        <a href="javascript:;" class="close"></a>
+    </div>
+    <div>
+        <div class="apply-inf-wrap">
+            <ul>
+                <li class="clearfix">
+                    <p class="title">请假类型</p>
+                    <p class="inf">年假</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">员工工号</p>
+                    <p class="inf">
+                        <input type="text" placeholder="请输入工号"/>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">员工姓名</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据工号自动带出"/>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">联系电话</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据工号自动带出"/>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">请假开始时间</p>
+                    <p class="inf">
+                        <input class="datetime" type="text" placeholder="请选择"/>
+                        <em class="arrow"></em>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">当天班次</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据请假开始时间带出"/>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">请假结束时间</p>
+                    <p class="inf">
+                        <input class="datetime" type="text" placeholder="请选择"/>
+                        <em class="arrow"></em>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">当天班次</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据请假开始时间带出"/>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">年假额定</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据请假起止时间带出"/>
+                    </p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">合计（天）</p>
+                    <p class="inf">
+                        <input type="text" placeholder="根据请假起止时间带出"/>
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title nofl">请假事由</p>
+                    <div class="tr-wrap">
+                        <textarea rows="4"  placeholder="请填写审批意见"></textarea>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title nofl">工作安排</p>
+                    <div class="tr-wrap">
+                        <textarea placeholder="请填写审批意见"></textarea>
+                    </div>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">工作交接人</p>
+                    <p class="inf">
+                        <input type="text" placeholder="请指定工作交接人"/>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="pageBottom-btn">
+    <div class="opacity-bg"></div>
+    <a href="javascript:" class="lg-btn green pop-btn-0">提交</a>
+</div>
+
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+<script>
+    $(function () {
+        $('.datetime').mobiscroll().datetime({
+            theme: 'ios',     // Specify theme like: theme: 'ios' or omit setting to use default
+            mode: 'mixed',       // Specify scroller mode like: mode: 'mixed' or omit setting to use default
+            display: 'modal', // Specify display mode like: display: 'bottom' or omit setting to use default
+            lang: 'zh',       // Specify language like: lang: 'pl' or omit setting to use default
+            minDate: new Date(2008,3,10,9,22),  // More info about minDate: http://docs.mobiscroll.com/2-14-0/datetime#!opt-minDate
+            maxDate: new Date(2020,7,30,15,44),   // More info about maxDate: http://docs.mobiscroll.com/2-14-0/datetime#!opt-maxDate
+            stepMinute: 5  // More info about stepMinute: http://docs.mobiscroll.com/2-14-0/datetime#!opt-stepMinute
+        });
+    });
+</script>
+</body>
+</html>

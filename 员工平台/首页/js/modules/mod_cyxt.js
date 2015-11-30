@@ -12,41 +12,14 @@ define([
     'jquery-ui',
     'backbone',
     'underscore',
-    'template-loader'
-], function ($,jquery_ui, Backbone, _, tpl) {
-
+    'template-loader',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui, Backbone, _, tpl,loadAM,URL) {
     var cyxt_model = Backbone.Model.extend({
         defaults:{
             title:"XXX",
-            list:
-                [
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"我的排班21",
-                        "img":"temp/1.png"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"我的排班",
-                        "img":"temp/1.png"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"考勤异常",
-                        "img":"temp/1.png"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"外出申请",
-                        "img":"temp/1.png"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"加班申请",
-                        "img":"temp/1.png"
-                    }
-
-                ],
+            list: [],
             parent:null
         }
     });
@@ -57,14 +30,20 @@ define([
         initialize: function () {
             var that = this;
             this.template = tpl["cfx-sys"];
-
-            this.loadData("js/json/cyxt.json").done(function (data) {
-                that.model.set("list",data["list"]) ;
-                that.model.set("title",data["title"]) ;
-                that.model.on("change", that.render, that);
-                that.render();
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                    that.model.set("list",data["list"]);
+                    that.model.set("title",data["title"]) ;
+                    that.model.get("parent").render();
+                }).fail(function () {
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
+            this.model.on("change", this.render, this);
         },
         render: function () {
             var html = this.template({
@@ -86,10 +65,25 @@ define([
         getMore: function () {
             return this.model.get("more");
         },
-        loadData:function (url) {
+        queryEvent: function () {
+            var that = this;
+            loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+            that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                that.model.set("list",data["list"]);
+                that.model.set("title",data["title"]) ;
+                that.model.get("parent").render();
+            }).fail(function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
+            });
+        },
+        loadData:function (url,dataId) {
             return $.ajax({
                 type: "post",
                 url: url,
+                data:{dataId:dataId},
                 dataType: "json"
             });
         }
@@ -98,13 +92,12 @@ define([
     var create = function (dataId,parent) {
         var qt_view = new cyxt_view({
             model:new cyxt_model({
-                parent:parent
+                parent:parent,
+                dataId:dataId
             })
         });
         return qt_view;
     };
-
-
     return{
         create:create
     }

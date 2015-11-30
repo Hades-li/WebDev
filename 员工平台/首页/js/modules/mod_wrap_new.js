@@ -34,7 +34,7 @@ define([
     var domTpl = $(
         "<div class=\'mod-wrap tabWrap\' >"+
         "    <div class=\'mod-head\' >"+
-        "        <a href=\'javascript:\' target=\'_blank\' class=\"more\"></a>"+
+        "        <a href=\'javascript:\' target=\'_blank\' class=\"more\" title=\"更多\"></a>"+
         "        <div class=\'title-head clearfix\' >"+
         "            <h3>标题</h3>"+
         "        </div>"+
@@ -77,36 +77,47 @@ define([
                 $el:domTpl.clone()
             },
             addMod: function (typeId,dataId){
-                if(this.def.mods.length == 2){
+                var len = 0;
+                if(window.admin){
+                    len = admin;
+                }else{
+                    len = 2;
+                }
+                if(this.def.mods.length >= len){
                     alert("不能增加超过2个组件");
                 }else{
-                    var mods = this.selMods(typeId,dataId);
-                    var dom = this.def.$el;
-                    Array.prototype.push.apply(this.def.mods,mods);
-                    this.render(1);
+                    this.selMods(typeId,dataId);
+                    this.render(this.def.mods.length-1);
                 }
             },
             delMod: function(index) {
                 var dom = this.def.$el;
+                var id = this.def.mods[index].model.get("dataId");
                 this.def.mods.splice(index,1);
+                $("."+id).removeClass("used").removeClass(id).draggable("enable");
+
                 this.render(dom.find(".tab-head a.active").index());
+                //改写li的属性标识
+                var li = this.def.$el.parents(".gs-w");
+                var li_typeArray = li.attr("type_id").split(",");
+                var li_widArray = li.attr("wid_id").split(",");
+                li_typeArray.splice(index,1);
+                li_widArray.splice(index,1);
+                li.attr("type_id",li_typeArray).attr("wid_id",li_widArray);
             },
             //将整个组件干掉
             destroy: function () {
                 var dom = this.def.$el;
-                this.def.mods.splice(0,this.def.mods.length);
+                var len = this.def.mods.length;
+                for(var i = 0;i < len;i++){
+                    this.delMod(0);
+                }
                 //判断一下子组件是否为空
                 if(this.def.mods.length != 0){
                     alert("子组件没有被清除掉");
                 }else{
                     dom.remove();
                 }
-            },
-            setTitle: function(index,str){
-
-            },
-            setMore: function (href) {
-
             },
             getEl: function () {//返回el对象
                 return this.def.$el;
@@ -127,49 +138,56 @@ define([
             },
             //选择mod并加入
             selMods: function (typeIds,dataIds) {
-                var mods = [];
+                var that = this;
+                var mods = this.def.mods;
                 var mod;
                 for(var i = 0; i < typeIds.length;i++){
                     switch(typeIds[i]){
-
-                        case "wddb":        //文章列表
-                            mod = artList.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "rwtj":       //任务统计
-                            mod = q_table.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "rssh":        //人事生活
-                            mod = rssh.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "cyxt":  //常用系统
-                            mod = cyxt.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "cycd":       //常用菜单
-                            mod = usualSys.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "xxcz":       //学习成长
-                            mod = daydayup.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "kmtj"://科目统计
-                            mod = echart.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        case "dbrw"://待办任务
-                            mod = dbrw.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                        default :
-                            mod = artList.create(dataIds[i],this);
-                            mods.push(mod);
-                            break;
-                    }
+                            case "wddb":        //文章列表
+                                mod = artList.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "rwtj":       //任务统计
+                                mod = q_table.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "rssh":        //人事生活
+                                mod = rssh.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "cyxt":  //常用系统
+                                mod = cyxt.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "cycd":       //常用菜单
+                                mod = usualSys.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "xxcz":       //学习成长
+                                mod = daydayup.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "kmtj":    //科目统计
+                                mod = echart.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            case "dbrw":    //待办任务
+                                mod = dbrw.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                            default :
+                                mod = artList.create(dataIds[i],that);
+                                mods.push(mod);
+                                break;
+                        }
+                    $(".editor-wrap .widget:not(.used)").each(function () {
+                        if($(this).attr("wid_id") == dataIds[i]){
+                            $(this).addClass("used").addClass(dataIds[i]);
+                            $(this).draggable("disable");
+                        }
+                    });
                 }
+                //在左侧菜单标记已用过的组件
                 return mods;
             },
             bindTabEvent: function () {
@@ -187,7 +205,7 @@ define([
                     }else{
                         dom.find(".more").hide();
                     }
-                    //mods[index].refresh();
+                    mods[index].refresh();
                 })
             },
             bindDelEvent: function () {
@@ -221,10 +239,10 @@ define([
                         state = "none";
                     }
                     var tabBtn =  $(
-                        "            <a class=\'\' href=\'javascript:\'>"+
+                        "            <a class='' href='javascript:'>"+
                         "                <span>"+title+"</span>"+
-                        "                <em style=\'display:"+state+"\'></em>"+
-                        "                <b></b>"+
+                        "                <em style='display:"+state+"'></em>"+
+                        "                <b title='删除'></b>"+
                         "            </a>"
                     ) ;
                     tab_head.append(tabBtn);
@@ -242,7 +260,6 @@ define([
 
                 for(var i in this.def.mods){
                     mod_body.append(this.def.mods[i].getEl());
-                    //this.def.mods[i].refresh();
                 }
                 //设置显示第几个tab内容，如果index没有给参数，默认是1
                 if(index != undefined && index < dom.find(".tab-head a").size()){
@@ -285,7 +302,6 @@ define([
         if(wrapObj){
             wrapObj.destroy();
             delete wrapMap[key];
-            console.log("wrapMap的数量为:"+mapLength(wrapMap));
         }
     };
     //用于li的计数

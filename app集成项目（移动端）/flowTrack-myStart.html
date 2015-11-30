@@ -1,0 +1,135 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>流程跟踪-已审批流程查看</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css"/>
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container">
+    <div class="itp-header">
+        <a href="javascript:;" class="h-return">
+            <b></b>
+            <span>返回</span>
+        </a>
+        <h1>请假申请</h1>
+        <a href="javascript:;" class="close"></a>
+    </div>
+    <div>
+        <div class="draft-head">
+            <a class="draft-btn" href="javascript:">
+                <em class="shenpi"></em>
+                审批环节
+            </a>
+        </div>
+        <div class="b-line"></div>
+        <div class="apply-inf-wrap">
+            <ul>
+                <li class="clearfix">
+                    <p class="title">请假类型</p>
+                    <p class="inf">年假</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">员工姓名</p>
+                    <p class="inf">刘陈鹏</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">联系电话</p>
+                    <p class="inf">186516222622</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">请假开始时间</p>
+                    <p class="inf">2015-08-04  09:00</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">当天班次</p>
+                    <p class="inf">09:00:00-10:00:00</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">请假结束时间</p>
+                    <p class="inf">2015-08-04  18:00</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">当天班次</p>
+                    <p class="inf">09:00:00-10:00:00</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">年假定额</p>
+                    <p class="inf">6</p>
+                </li>
+                <li class="clearfix">
+                    <p class="title">请假合计（天）</p>
+                    <p class="inf">1</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title nofl">请假事由</p>
+                    <p class="content">上西天求神拜佛，参加王母娘娘蟠桃宴圣会。顺带调戏一下嫦娥。</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title nofl">请假事由</p>
+                    <p class="content">
+                        1. 豆芽办公需求文档编写<br/>
+                        2. 跟进视觉设计
+                    </p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title">工作交接人</p>
+                    <p class="inf">孔夫子</p>
+                </li>
+            </ul>
+            <ul>
+                <li class="clearfix">
+                    <p class="title nofl">审批意见</p>
+                    <div class="tr-wrap">
+                        <textarea placeholder="请填写审批意见"></textarea>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+<script>
+    $(function () {
+        setTimeout(function (){
+            ygpt.v_alignment();
+        },0);
+    });
+</script>
+</body>
+</html>

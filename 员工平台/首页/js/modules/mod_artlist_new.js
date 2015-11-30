@@ -5,71 +5,45 @@ define([
     'jquery',
     'jquery-ui',
     'backbone',
-    'underscore'
-], function ($,jquery_ui,Backbone) {
+    'underscore',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui,Backbone,_,loadAM,URL) {
 
     var Art_list_model = Backbone.Model.extend({
         defaults:{
             dataId:undefined,
             parent:undefined,
-            hasTask:true,
+            hasTask:false,
             "title": "XXX",
             "more": "http://www.taobao.com",
-            "list": [
-                {
-                    "date": "2015-10-28",
-                    "title": "测试数据",
-                    "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587422"
-                },
-                {
-                    "date": "2015-10-28",
-                    "title": "测试数据",
-                    "href": "http://10.19.250.95:9080/soa-promotion-web-in/workitemAllDispatch.do?wid=3587407"
-                },
-                {
-                    "date": "2015-10-28",
-                    "title": "测试数据",
-                    "href": "http://spessit.cnsuning.com:9080/spes-web-in/workitemAllDispatch.do?wid=3587403"
-                },
-                {
-                    "date": "2015-10-28",
-                    "title": "咨询审计费用流程",
-                    "href": "http://ps7pre.cnsuning.com/ChainStoreProject/workitemAllDispatch.do?wid=289413579"
-                },
-                {
-                    "date": "2015-10-28",
-                    "title": "咨询审计费用流程",
-                    "href": "http://ps7pre.cnsuning.com/ChainStoreProject/workitemAllDispatch.do?wid=289413572"
-                },
-                {
-                    "date": "2015-10-28",
-                    "title": "苏宁云商集团股份有限公司苏宁采购中心 陈文明 徐庄住宿申请",
-                    "href": "http://ps7pre.cnsuning.com/XuZhuangPro/workitemAllDispatch.do?wid=289413570"
-                }
-            ]
+            "list": []
         },
         initialize: function () {
 
         },
         //读取数据
-        queryData: function (callback,zoom,time) {
+        queryData: function (callback_done,callback_err,zoom,time) {
             var that = this;
-            var url ="js/json/daiban.json";
+            var url = URL;
             var dataId = this.get("dataId");
                 $.ajax({
-                type: "get",
+                type: "post",
                 url: url,
                 dataType: "json",
                 data:{dataId:dataId,zoom:zoom,time:time}
             }).done(function (data) {
-                that.set("title",data["title"]) ;
-                that.set("more",data["more"]);
-                that.set("list",data["list"]);
-                if(that.get("list").length == 0){
-                    that.set("hasTask",false);
+                that.set({
+                    title:data["title"],
+                    more:data["more"],
+                    list:data["list"]
+                });
+                if(callback_done){
+                    callback_done();
                 }
-                if(callback){
-                    callback();
+            }).fail(function () {
+                if(callback_err){
+                    callback_err();
                 }
             })
         }
@@ -84,10 +58,13 @@ define([
                 "                    <li class=\"clearfix\">",
                 "                        <p class=\"context\">",
                 "                            <em></em>",
-                "                            <a href=\"<%= i.href %>\"><%= i.title %></a>",
+                "                            <% if(i.classify && i.classify.length != 0){ %>",
+                "                            <strong>[<%= i.classify?i.classify:'无数据' %>]</strong>",
+                "                            <% } %>",
+                "                            <a href=\"<%= i.href?i.href:'http://404.htm' %>\" target=\"_blank\" title=\"<%= i.title?i.title:'无数据' %>\"><%= i.title?i.title:'无数据' %></a>",
                 "                        </p>",
                 "                        <p class=\"quantity\">",
-                "                            <%= i.date %>",
+                "                            <%= i.date?i.date:'无数据' %>",
                 "                        </p>",
                 "                    </li>",
                 "                    <% }); %>",
@@ -95,16 +72,25 @@ define([
                 "            </div>"
             ].join("")
         ),
-        className:"daydayup",
+        className:"m-wddb",
         initialize: function () {
             var that = this;
-            this.model.queryData(function () {
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                //console.log(that.$el);
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.model.queryData(function () {
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                    that.model.get("parent").render();
+                }, function () {//加载失败
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
             this.model.on("change", this.render, this);
         },
         render: function () {
-            console.log("渲染artList");
+            //console.log("渲染artList");
             this.$el.html(this.template({
                 list:this.model.get("list")
             }));
@@ -131,7 +117,14 @@ define([
         queryEvent: function () {
             var zoom = this.$el.find("#input1").val();
             var time = this.$el.find("#input2").val();
+            var that = this;
+            loadAM.loadingAnimation(this.$el.parents(".gs-w"),true);
             this.model.queryData(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+            }, function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
             },zoom,time);
         }
     });

@@ -121,93 +121,6 @@
 .nav-wrap ul li a:hover span, .nav-wrap ul li a.on span {
   color: #fff; }
 
-.editor-wrap {
-  background-color: #aabcd5; }
-  .editor-wrap h1 {
-    color: #36414c;
-    background-color: #dae6f7; }
-    .editor-wrap h1 a {
-      background: url(images/theme-blue/ui.png) -185px -115px no-repeat; }
-      .editor-wrap h1 a:hover {
-        background-position: -207px -115px; }
-  .editor-wrap dl dt {
-    color: #475666; }
-
-.widget {
-  background-color: #cbd8eb; }
-  .widget em {
-    background: url(images/theme-blue/ui.png) no-repeat; }
-    .widget em.xuexi {
-      background-position: -20px -158px; }
-    .widget em.daiban {
-      background-position: -54px -158px; }
-    .widget em.daiyue {
-      background-position: -88px -158px; }
-    .widget em.gonggao {
-      background-position: -122px -158px; }
-    .widget em.fenxi {
-      background-position: -156px -158px; }
-    .widget em.guanli {
-      background-position: -190px -158px; }
-    .widget em.caidan {
-      background-position: -224px -158px; }
-    .widget em.xitong {
-      background-position: -258px -158px; }
-    .widget em.zizhu {
-      background-position: -292px -158px; }
-    .widget em.tongzhi {
-      background-position: -122px -158px; }
-    .widget em.fawen {
-      background-position: -54px -459px; }
-    .widget em.kemu {
-      background-position: -88px -459px; }
-    .widget em.tongji {
-      background-position: -122px -459px; }
-    .widget em.renwu {
-      background-position: -156px -459px; }
-    .widget em.renshi {
-      background-position: -190px -459px; }
-    .widget em.shenghuo {
-      background-position: -224px -459px; }
-  .widget p {
-    color: #596c80; }
-  .widget:hover {
-    background-color: #dae6f7; }
-    .widget:hover em.xuexi {
-      background-position: -20px -208px; }
-    .widget:hover em.daiban {
-      background-position: -54px -208px; }
-    .widget:hover em.daiyue {
-      background-position: -88px -208px; }
-    .widget:hover em.gonggao {
-      background-position: -122px -208px; }
-    .widget:hover em.fenxi {
-      background-position: -156px -208px; }
-    .widget:hover em.guanli {
-      background-position: -190px -208px; }
-    .widget:hover em.caidan {
-      background-position: -224px -208px; }
-    .widget:hover em.xitong {
-      background-position: -258px -208px; }
-    .widget:hover em.zizhu {
-      background-position: -292px -208px; }
-    .widget:hover em.tongzhi {
-      background-position: -122px -208px; }
-    .widget:hover em.fawen {
-      background-position: -54px -501px; }
-    .widget:hover em.kemu {
-      background-position: -88px -501px; }
-    .widget:hover em.tongji {
-      background-position: -122px -501px; }
-    .widget:hover em.renwu {
-      background-position: -156px -501px; }
-    .widget:hover em.renshi {
-      background-position: -190px -501px; }
-    .widget:hover em.shenghuo {
-      background-position: -224px -459px; }
-    .widget:hover p {
-      color: #008bdb; }
-
 .l-tools-bottom {
   background-color: #c0cee1; }
   .l-tools-bottom a em {
@@ -220,11 +133,11 @@
     background-position: -227px -110px; }
   .l-tools-bottom a.save-btn em {
     background-position: -285px -110px; }
-  .l-tools-bottom a.tools-btn:hover em {
+  .l-tools-bottom a.tools-btn:hover em, .l-tools-bottom a.tools-btn.active em {
     background-position: -100px -110px; }
-  .l-tools-bottom a.review-btn:hover em {
+  .l-tools-bottom a.review-btn:hover em, .l-tools-bottom a.review-btn.active em {
     background-position: -257px -110px; }
-  .l-tools-bottom a.save-btn:hover em {
+  .l-tools-bottom a.save-btn:hover em, .l-tools-bottom a.save-btn.active em {
     background-position: -311px -110px; }
   .l-tools-bottom a.fold-btn:hover em {
     background-position: -140px -110px; }
@@ -331,6 +244,8 @@
       background: url(images/theme-blue/ui.png) -181px -317px no-repeat; }
       .mod-wrap .mod-head .tab-head a:hover b:hover {
         background-position: -193px -317px; }
+    .mod-wrap .mod-head .tab-head a:hover span {
+      color: #008bdb; }
 
 .query-table .tonglan-table table .quanguo {
   background-color: #faf5e6; }
@@ -342,3 +257,8 @@
   color: #333; }
 .query-table .tonglan-table table td a:hover {
   color: #fa761e; }
+
+.load-wrap {
+  background-color: #f2f5f7; }
+  .load-wrap p {
+    color: #999; }

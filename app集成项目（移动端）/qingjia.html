@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>请假申请</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css"/>
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<!--顶部标题-->
+<div class="log-container">
+    <div class="itp-header">
+        <a href="javascript:" class="h-return">
+            <b></b>
+            <span>返回</span>
+        </a>
+        <h1>请假申请</h1>
+        <a href="javascript:;" class="close"></a>
+    </div>
+    <!--请假申请大图-->
+    <div class="lg-img">
+        <img src="images/qingjia.jpg" alt="请假"/>
+    </div>
+    <div class="qingjia-attention">
+        1.请假最晚需于休息当日24:00前提交<br/>
+        2.同一部门普通员工间可以代提流程<br/>
+        3.部门负责人和普通员工之间不能代提流程<br/>
+        4.有未完成审批的请流程时不能提交新的流程
+    </div>
+    <div class="qingjia-btn">
+        <a href="javascript:" class="lg-btn green">起草年假申请</a>
+        <a href="javascript:" class="lg-btn red">起草补休申请</a>
+    </div>
+</div>
+
+<script>
+    <!--设置页面的根字体大小-->
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+</script>
+<script src="js/lb.js"></script>
+<script>
+    $(function () {
+        setTimeout(function (){
+            ygpt.v_alignment();
+        },0);
+    });
+</script>
+</body>
+</html>

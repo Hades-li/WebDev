@@ -15,7 +15,7 @@ define(['jquery','gridster','modules/mod_wrap_new'],
             '   </div>'+
             '</li>';
         var init = function (callback) {
-            console.log("初始化layout_lj-ok");
+            //console.log("初始化layout_lj-ok");
             var widgets = [
                 [gridWidget, 2, 4],
                 [gridWidget, 2, 4],

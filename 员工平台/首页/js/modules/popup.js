@@ -193,12 +193,14 @@ define([
         //handler:".exception-info",
         popObj:"#pop3"
     });*/
-    //随机颜色
-    var color = ['#00c3e7','#00cd6f','#00d0d6','#ffb335','#f8796b','#8ccb42','#f78c3d','#6d94e3'];
-    function randomVal(val){
-        return Math.floor(Math.random()*8);
-    }
-    $(function(){
+
+    //弹出框渲染后调用的函数
+    function popup_oparation(){
+        //随机颜色
+        var color = ['#00c3e7','#00cd6f','#00d0d6','#ffb335','#f8796b','#8ccb42','#f78c3d','#6d94e3'];
+        function randomVal(val){
+            return Math.floor(Math.random()*8);
+        }
         $("#pop1 li a").each(function(i){
             $(this).css({
                 'background':  color[randomVal()]
@@ -206,8 +208,21 @@ define([
         });
         //弹出框排序
         $(".index-pop ul").sortable({});
-    });
+        $("#pop3 .index-pop ul").sortable({
+            stop: function( event, ui ) {
+            //coding here
 
+            }
+        });
+        //添加与已添加
+        $("#pop3 .table-wrap a").click(function(){
+            $(this).hasClass("has-add") ? $(this).removeClass("has-add").html("<em></em>添加") : $(this).addClass("has-add").html("<em></em>已添加");
+        })
+
+    }
+    $(function(){
+        popup_oparation()
+    })
 
     //弹出框上面点击图标改变的效果
     $(document).on("click","#pop1 li a em,#pop2 li a em",function(){
@@ -239,6 +254,7 @@ define([
     //常用菜单
     $("#pop3").on("click",".has-add-menu li em",function(){
         $(this).parent().parent().remove();
+
     });
     //人事与基本生活
     hb.dialog({
@@ -260,26 +276,44 @@ define([
         ,"pop3":".usual-menu"
     };
 
-    function confirmBtn(obj){
-        var parent = obj.parent().parent().parent().parent().attr("id");
+    function confirmBtn(pop){
+        //var parent = obj.parent().attr("id");
 
-        var key = $(mapping[parent]).parent().parent().parent().attr("wrap_key");
-        return key;
+       // var key = $(mapping[parent]).parent().parent().parent().attr("wrap_key");
+        //获取对应弹出框的wrap_key
+        var wrap_key = $(pop).attr("data_wrap_key");
+        return wrap_key
 
     }
 
     //自助类组件reload数据方法
-    function reloadData(wrap_key,url){
-        var that = mod_wrap_new.getChildMod(confirmBtn(wrap_key));
-        that.loadData(url)
-            .done(function(data){
+    function reloadData(data,wrap_key){
+        var that = mod_wrap_new.getChildMod(wrap_key);
+        //that.loadData(url)
+            //.done(function(data){
                 that.model.set("list",data["list"]);
-            })
+            //})
     }
 
+    function click_reload(url,btn,wid_id){
+        //动态更新常用菜单的数据
+        $(document).on("click",btn,function(){
+            var obj =$(this);
+            var key = obj.parent().attr("data_wrap_key");
+           /* var wid_id = $("div[wrap_key='"+ key +"']").parent().attr("wid_id");*/
+            $.ajax({
+                type: "post",
+                url: url,
+                data: wid_id
+            }).done(function(data){
+                reloadData(data,key);
+            }) ;
+        });
+    }
 
     return{
         confirmBtn:confirmBtn,
-        reloadData:reloadData
+        reloadData:reloadData,
+        click_reload:click_reload
     }
 });

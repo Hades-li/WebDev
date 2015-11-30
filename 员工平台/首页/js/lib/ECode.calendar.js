@@ -105,9 +105,12 @@
                         }else{
                             that.render(new Date())
                         }
+
                     });
 
                     //var confirm = this.dateWarp.find(".confirm-btn");
+
+
                 },
                 _creade:function(){//创建日历外部框架
                     var aTmp = [],aTmpt=[],close='<span class="cal-close">close</span>',htmlp = '<span class="cal-prev">prev</span>',htmln='<span class="cal-next">next</span>';
@@ -142,6 +145,7 @@
                             this.drawDate(aCal.eq(i), {year: year, month: month})
 		                }
                     def.isSelect?this.selectChange():this.btnEvent();
+
                 },
                 _template :[//日历框架
                     '<div class="cal-container">',
@@ -157,6 +161,7 @@
                     '<dt><strong>六</strong></dt>',
                     '<dd></dd>',
                     '</dl>',
+                    '<em class="clear-btn">清空</em>',
                     '</div>'],
                 timeTemp:[
                     '<div class="calendar-time">',
@@ -275,6 +280,7 @@
                     this.linkOn();
                     this.outClick();
                     this.eventClose();
+                    this.clearClose();
                     if(def.isTime){
                         this.dragTime("#plan-h","hour");
                         this.dragTime("#plan-m","min");
@@ -412,9 +418,9 @@
                                     break;
                             };
                             if(showbox==null){
-                                input[0].tagName.toUpperCase()==="INPUT"?input.val($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:''))):input.text($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:'')))
+                                input[0].tagName.toUpperCase()==="INPUT"?input.val($.trim($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:'')))):input.text($.trim($(this)[0]["data-date"]+(isWeek?weeks:(isTime?hour+':'+min:''))))
                             }else{
-                                $(showbox)[0].tagName.toUpperCase()==="INPUT"?$(showbox).val($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:''))):$(showbox).text($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:'')));
+                                $(showbox)[0].tagName.toUpperCase()==="INPUT"?$(showbox).val($.trim($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:'')))):$(showbox).text($.trim($(this)[0]["data-date"]+" "+(isWeek?weeks:(isTime?hour+':'+min:''))));
                             }
                             startdate = $(this)[0]["data-date"];
                             starttime = [hour,min];
@@ -435,8 +441,18 @@
                     var that = this;
                     $(document).bind("click",function(){
                         that.removeDate();
-                    })
+                    });
+
+                },
+                clearClose:function(){
+                    var that = this;
+                    $(".clear-btn").bind("click",function(){
+                        that.removeDate();
+                        input.val(function(){
+                            return "";
+                        });
+                    });
                 }
             }
             calendarfn.init();
-        }
+        };

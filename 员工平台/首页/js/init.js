@@ -3,12 +3,11 @@
  */
 define([
     'jquery',
-    'layout_lj',
     'drag_new',
     'jquery-ui',
     'mousewheel' ,
     'scrollbar'
-], function ($,layout_lj,drag_new,jui,mwl,scrollbar) {
+], function ($,drag_new,jui,mwl,scrollbar) {
     var Tab = function(elem,options){
         this.elem = elem;
         this.$elem= $(elem);
@@ -61,10 +60,10 @@ define([
         init:function(){
             this.page_h_init();
             this.allChose(".tonglan-table table") ;
-            this.l_nav_fold();
+            //this.l_nav_fold();
             this.bool_btn();
             this.flow();
-            this.moni();
+            this.moni_2();
             this.changeSkin();
             this.mayTable();
             this.popbtns();
@@ -117,6 +116,27 @@ define([
             $(document).on("click",function(e){
                 e.stopPropagation();
                 $(".moni-select ul").hide();
+            });
+        },
+        //模拟下拉菜单
+        moni_2: function(){
+            var modcallback = this.sw_mod;
+            var m = $(".m2-sel");
+            var btn = $(".sel-button");
+            $(document).on("click",".m2-sel .sel-button",function(e){
+                e.stopPropagation();
+                $(this).next("ul").show();
+            });
+            $(document).on("click",".m2-sel ul li",function(){
+                var t = $(this).html();
+                var v = $(this).attr("val");
+                $(this).parent("ul").hide();
+                $(this).parent().prev().val(v).html(t);
+                modcallback(v);
+            });
+            $(document).on("click",function(e){
+                e.stopPropagation();
+                $(".m2-sel ul").hide();
             });
         },
         //任务管理页面切换模板上传
@@ -209,34 +229,29 @@ define([
 
         },
         //左侧菜单折叠
-        l_nav_fold: function () {
+        l_nav_fold: function (callback) {
             var _l_nav = $(".l-nav");
             var _r_container = $(".r-mn,.change-skin-wrap");
             var _nav_list = _l_nav.find(".nav-wrap ul");
             var _collapse_btn = $(".collapse-btn");
             var isCollapsed = false;
-            nav_open_close();
+            //nav_open_close();
             l_nav_collapse_click();
             //菜单内点击效果
             function nav_open_close(){
                 _nav_list.find("li").click(function () {
-                    /*$(this).siblings("li").removeClass("on");
-                     $(this).siblings("li").next("dd").slideUp(300);
-                     $(this).toggleClass("on");
-                     $(this).next("dd").slideToggle(300);*/
                     if(isCollapsed){
                         isCollapsed = !isCollapsed;
                         l_nav_collapse(isCollapsed);
                     }
                 });
-                /*_nav_list.find(".lv2 a").click(function (){
-                 $(this).next("ol").slideToggle(300);
-                 })*/
             }
-
             //左侧区域折叠展开
             function l_nav_collapse_click(){
                 _collapse_btn.click(function () {
+                    if(callback){
+                        callback();
+                    }
                     isCollapsed = !isCollapsed;
                     l_nav_collapse(isCollapsed);
                 })
@@ -246,12 +261,9 @@ define([
                 if(isCollapse){
                     _l_nav.addClass("collapsed");
                     _r_container.addClass("open");
-                    //_nav_list.find("dd").slideUp(300);
-                    //_collapse_btn.removeClass("on");
                 }else{
                     _l_nav.removeClass("collapsed");
                     _r_container.removeClass("open");
-                    //_collapse_btn.addClass("on");
                 }
             }
         },
@@ -266,87 +278,122 @@ define([
         //弹窗
         dialog: function(opt){
             //参数
-            var def = {
-                has_handler : true,
-                handler     : $.noop,
-                cObj        : ".close",                         // cObj -关闭容器
-                popObj      : ".popup",                         // popObj-弹出层容器
-                decision    : ".decision-btn a"
-            };
-            $.extend(def, opt);
-            var close       = def.cObj,
-                popObj      = $(def.popObj),
-                decision    = def.decision;
+            /*
+            *  pos:         "center",弹出框位置默认居中；可选“diy”为自定义距离顶部高度；或者“”为跟随
+            * layer:       true,    是否有遮罩
+            * set_height:  $.noop,  自定义距离顶部高度
+            * timer:       $.noop   自动消失的时间
+            * */
+            function Dialog(opt){
+                var def = {
+                    has_handler: true,
+                    handler:     null,
+                    cObj:        ".close",
+                    popObj:      ".popup",
+                    decision:    ".decision-btn a",
+                    pos:         "center",
+                    layer:       true,
+                    set_height:  null,
+                    timer:       null
+                };
+                $.extend(def, opt);
+                var close    = def.cObj,
+                    popObj   = $(def.popObj),
+                    decision = def.decision;
+                function grayLayer(b){
+                    var div =$('<div id="grayLayer"></div>');
 
-            function grayLayer(b){
-                var div =$('<div id="grayLayer"></div>');
+                    if($("#grayLayer").length< 1){
+                        div.appendTo("body");
+                    }
+                    var gL = $("#grayLayer");
 
-                if($("#grayLayer").length< 1){
-                    div.appendTo("body");
+                    if(def.layer){
+                        gL.css({
+                            display:"block",
+                            width:$(window).width()+"px",
+                            height:$(document).height()+"px"
+                        });
+                    }
+
+
+                    if(b == false){
+                        //新增判断
+                        if($('.popup:visible').length<1){gL.hide();}
+
+                    }
                 }
-                var gL = $("#grayLayer");
-                gL.css({
-                    display:"block",
-                    width:$(window).width()+"px",
-                    height:$(document).height()+"px"
-                });
-
-                if(b == false){
-                    //新增判断
-                    if($('.popup:visible').length<1){gL.hide();}
-
+                function pos(){
+                    if(def.pos == "center"){
+                        popObj.css({
+                            top:($(window).height()-popObj.height())/2
+                                +$(window).scrollTop()+"px",
+                            marginLeft:-parseInt(popObj.width()/2)
+                        });
+                    }else if(def.pos == "diy"){
+                        popObj.css({
+                            top:parseInt(def.set_height)+$(window).scrollTop()+"px",
+                            marginLeft:-parseInt(popObj.width()/2)
+                        });
+                    }else{ //跟随显示
+                        popObj.css({top:popObj.offset().top+25+"px",left:popObj.offset().left+"px",marginLeft:0});
+                    }
+                    if(def.timer){
+                        setTimeout(function(){
+                            popObj.hide();
+                            grayLayer(false);
+                        },parseInt(def.timer));
+                    }
                 }
-            }
-            function pos(){
-                popObj.css({
-                    top:($(window).height()-popObj.height())/2
-                    +$(window).scrollTop()+"px",
-                    marginLeft:-parseInt(popObj.width()/2)
-                });
-            }
-            //打开弹出框
-            function openWin(){
-                popObj.show();
-            }
-            //关闭弹出框
-            function closeWin(){
-                popObj.hide();
-                grayLayer(false);
-            }
+                //打开弹出框
+                function openWin(){
+                    popObj.show();
+                }
+                //关闭弹出框
+                function closeWin(){
+                    popObj.hide();
+                    grayLayer(false);
+                }
 
-            //启动
-            if(def.has_handler){
-                $(document).on("click",def.handler,function(){
+                //启动
+                if(def.has_handler){
+                    $(document).on("click",def.handler,function(){
+                        grayLayer();
+                        openWin();
+                        pos();
+                        popObj.find(close).click(function(){
+                            closeWin();
+                        });
+                        popObj.find(decision).click(function(){
+                            closeWin();
+                        });
+                    })
+                }else{
                     grayLayer();
                     openWin();
                     pos();
-                    popObj.find(close).click(function(){
+                    popObj.find(close,decision).click(function(){
                         closeWin();
                     });
                     popObj.find(decision).click(function(){
                         closeWin();
                     });
-                })
-            }else{
-                grayLayer();
-                openWin();
-                pos();
-                popObj.find(close,decision).click(function(){
-                    closeWin();
+                }
+
+                $(window).resize(function(){  //放缩
+                    /*var ncw = document.documentElement.scrollLeft+document.documentElement.clientWidth;
+                     $("#grayLayer").width(ncw);*/
+                    $("#grayLayer").css({
+                        width:$(window).width()+"px",
+                        height:$(document).height()+"px"
+                    });
+                    pos();
                 });
-                popObj.find(decision).click(function(){
-                    closeWin();
+                $(window).scroll(function(){
+                    pos();
                 });
             }
-
-            $(window).resize(function(){  //放缩
-                var ncw = document.documentElement.scrollLeft+document.documentElement.clientWidth;
-                $("#grayLayer").width(ncw);
-                pos();
-            });
-            $(window).scroll(function(){
-                pos();
-            });
+            return new Dialog(opt)
         },
         //页面高度初始化
         page_h_init:function(){
@@ -423,6 +470,9 @@ define([
             });
             $(document).on("click",".tools-btn,.addMod-btn,.addBtn", function () {
                 editor.css("left",0);
+            });
+            $(document).on("click",".tools-btn,.review-btn,.save-btn", function () {
+                $(this).addClass("active").siblings("a").removeClass("active");
             })
         }
     };
@@ -439,9 +489,7 @@ define([
                 $(".tab-btn a").removeClass("active");
                 $(".tab-btn a").eq(index).addClass("active");
                 $(".tab-content-list").hide().eq(index).show();
-
             });
-
             this.alert();
             this.menu();
 
@@ -472,18 +520,27 @@ define([
             $(document).on("click",".custom-com .roll .prev",function(){
                 var ul = $(this).parent().siblings(".ul-wrap").find("ul");
                 len = ul.length;
-                index++ ;
-                if(index >= len){index = 0}
+                index--;
+                if(index < 0){index = len-1}
                 ul.hide().eq(index).show();
 
             });
             $(document).on("click",".custom-com .roll .next",function(){
+
                 var ul = $(this).parent().siblings(".ul-wrap").find("ul");
                 len = ul.length;
-                index--;
-                if(index < 0){index = len-1}
+                index++ ;
+                if(index >= len){index = 0}
                 ul.hide().eq(index).show();
-            })
+            });
+
+            //常用菜单阻止冒泡
+            $(document).on("click",".index-pop a em",function(e){
+                e.stopPropagation();
+                return false;
+            });
+
+
         }
     };
     window.zj = zj;

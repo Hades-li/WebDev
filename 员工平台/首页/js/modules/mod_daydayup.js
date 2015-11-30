@@ -5,8 +5,10 @@ define([
     'jquery',
     'jquery-ui',
     'backbone',
-    'underscore'
-], function ($,jquery_ui,Backbone,_) {
+    'underscore',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui,Backbone,_,loadAM,URL) {
 
     var Daydayup_model = Backbone.Model.extend({
         defaults:{
@@ -21,9 +23,9 @@ define([
 
         },
         //读取数据
-        queryData: function (callback,zoom,time) {
+        queryData: function (callback_done,callback_err,zoom,time) {
             var that = this;
-            var url ="js/json/daydayup.json";
+            var url = URL;
             var dataId = this.get("dataId");
                 $.ajax({
                 type: "get",
@@ -34,13 +36,17 @@ define([
                 that.set("title",data["title"]) ;
                 that.set("more",data["more"]);
                 that.set("list",data["list"]);
-                if(that.get("list").length == 0){
+                /*if(that.get("list").length == 0){
                     that.set("hasTask",false);
+                }*/
+                if(callback_done){
+                    callback_done();
                 }
-                if(callback){
-                    callback();
-                }
-            })
+            }).fail(function () {
+                    if(callback_err){
+                        callback_err();
+                    }
+                })
         }
     });
     var Daydayup_view = Backbone.View.extend({
@@ -54,8 +60,8 @@ define([
                 "                        <img src=\"<%= i.picUrl %>\" alt=\"\" width=\"100\" height=\"70\" class=\"show-pic\"/>",
                 "                        <div class='wrap'>",
                 "                        <p class=\"context\">",
-                "                            <strong>[<%= i.classify %>]</strong>",
-                "                            <a href=\"<%= i.href %>\"><%= i.title %></a>",
+                "                            <strong>[<%= i.classify?i.classify:'无数据' %>]</strong>",
+                "                            <a href=\"<%= i.href %>\" target=\"_blank\" title=\"<%= i.title?i.title:'无数据' %>\"><%= i.title?i.title:'无数据' %></a>",
                 "                        </p>",
                 "                        <p class=\"quantity\">",
                 "                        <span>",
@@ -69,9 +75,9 @@ define([
                 "                    <li class=\"clearfix\">",
                 "                        <p class=\"context\">",
                 "                            <em></em>",
-                "                            <strong>[<%= i.classify %>]</strong>",
+                "                            <strong>[<%= i.classify?i.classify:'无数据' %>]</strong>",
                 "                            <i class=\"flag-mark\"></i>",
-                "                            <a href=\"<%= i.href %>\"><%= i.title %></a>",
+                "                            <a href=\"<%= i.href %>\" target=\"_blank\" title=\"<%= i.title?i.title:'无数据' %>\"><%= i.title?i.title:'无数据' %></a>",
                 "                        </p>",
                 "                        <p class=\"quantity\">",
                 "                        <span>",
@@ -86,16 +92,24 @@ define([
                 "            </div>"
             ].join("")
         ),
-        className:"daydayup",
+        className:"m-daydayup",
         initialize: function () {
             var that = this;
-            this.model.queryData(function () {
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.model.queryData(function () {
+                    that.model.get("parent").render();
+                }, function () {
+                    loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+            },0);
             this.model.on("change", this.render, this);
         },
         render: function () {
-            console.log("渲染daydayup");
+            //console.log("渲染daydayup");
             this.$el.html(this.template({
                 list:this.model.get("list")
             }));
@@ -122,16 +136,15 @@ define([
         queryEvent: function () {
             var zoom = this.$el.find("#input1").val();
             var time = this.$el.find("#input2").val();
+            var that = this;
+            loadAM.loadingAnimation(this.$el.parents(".gs-w"),true);
             this.model.queryData(function () {
-
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+            }, function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
             },zoom,time);
-        },
-        loadData:function (url) {
-            return $.ajax({
-                type: "post",
-                url: url,
-                dataType: "json"
-            });
         }
     });
     //创建对象

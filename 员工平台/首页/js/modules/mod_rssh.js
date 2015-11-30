@@ -9,40 +9,16 @@ define([
     'jquery-ui',
     'backbone',
     'underscore',
-    'template-loader'
-], function ($,jquery_ui, Backbone, _, tpl) {
+    'template-loader',
+    'modules/animation',
+    'modules/url'
+], function ($,jquery_ui, Backbone, _, tpl,loadAM,URL) {
 
     var rssh_model = Backbone.Model.extend({
         defaults:{
+            dataId:undefined,
             title:"XXX",
-            list:
-                [
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"我的排班111"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"我的排班"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"考勤异常"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"外出申请"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"加班申请"
-                    },
-                    {
-                        "href":"http://XXXX.do",
-                        "content":"立项申请"
-                    }
-
-                ],
+            list:[],
             parent:null
         }
     });
@@ -53,14 +29,20 @@ define([
         initialize: function () {
             var that = this;
             this.template = tpl["hr-life"];
-
-            this.loadData("js/json/rssh.json").done(function (data) {
-                that.model.set("list",data["list"]) ;
-                that.model.set("title",data["title"]) ;
-                that.model.on("change", that.render, that);
-                that.render();
-                that.model.get("parent").render();
-            });
+            setTimeout(function () {
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+                that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                    that.model.set("list",data["list"]) ;
+                    that.model.set("title",data["title"]) ;
+                    that.model.get("parent").render();
+                    loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+                }).fail(function () {
+                        loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                        that.queryEvent();
+                    })
+                });
+            },0);
+            this.model.on("change", this.render, this);
         },
         render: function () {
             var html = this.template({
@@ -91,10 +73,25 @@ define([
         getMore: function () {
             return this.model.get("more");
         },
-        loadData:function (url) {
+        queryEvent: function () {
+            var that = this;
+            loadAM.loadingAnimation(that.$el.parents(".gs-w"),true);
+            that.loadData(URL,that.model.get("dataId")).done(function (data) {
+                that.model.set("list",data["list"]) ;
+                that.model.set("title",data["title"]) ;
+                that.model.get("parent").render();
+                loadAM.loadingAnimation(that.$el.parents(".gs-w"),false);
+            }).fail(function () {
+                loadAM.loadErr(that.$el.parents(".gs-w"), function () {
+                    that.queryEvent();
+                })
+            });
+        },
+        loadData:function (url,dataId) {
             return $.ajax({
                 type: "post",
                 url: url,
+                data:{dataId:dataId},
                 dataType: "json"
             });
         }
@@ -103,7 +100,8 @@ define([
     var create = function (dataId,parent) {
         var qt_view = new rssh_view({
             model:new rssh_model({
-                parent:parent
+                parent:parent,
+                dataId:dataId
             })
         });
         return qt_view;
