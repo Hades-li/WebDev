@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <title>模拟select下拉框</title>
+    <link rel="stylesheet" href="css/init.css"/>
+    <link rel="stylesheet" href="css/moniSel.css"/>
+</head>
+<body style="padding: 10px;">
+<div>
+    <h3>原生的</h3>
+    <select name="" id="">
+        <option value="">项目123</option>
+        <option value="">项目123</option>
+        <option value="">项目123</option>
+        <option value="">项目123</option>
+        <option value="">项目123</option>
+    </select>
+</div>
+
+<div>
+    <h3>自定义的</h3>
+    <span class="moniSel">
+        <input type="button" val="" value="" onchange="alert('你选择了:'+this.value)" />
+        <em>
+            <a href="javascript:" val="1" >项目1</a>
+            <a href="javascript:" val="2">项目2</a>
+        </em>
+    </span>
+    <span class="moniSel">
+        <input type="button" val="1" value="项目"/>
+        <em>
+            <a href="javascript:" val="1" >项目1</a>
+            <a href="javascript:" val="2">项目2</a>
+            <a href="javascript:" val="3">项目3这行字也有点多</a>
+            <a href="javascript:" val="4">项目4</a>
+            <a href="javascript:" val="5">项目5这行字有点多</a>
+            <a href="javascript:" val="6">项目6</a>
+        </em>
+    </span>
+</div>
+
+<script src="js/jquery-1.9.0.min.js"></script>
+<script src="js/moniSel.js"></script>
+<script>
+    $(function () {
+        Sel.moni();
+    })
+</script>
+</body>
+</html>

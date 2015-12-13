@@ -1,0 +1,10 @@
+@charset "utf-8";
+.moniSel{position:relative;display:inline-block;width: 100px;}
+.moniSel input{display:inline-block; padding: 3px 20px 3px 5px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;height: 26px;box-sizing: border-box; line-height: 18px;  width: 100%;  border: 1px solid #e6e6e6;  text-align: left;  background: url(images/sel-arrow.png) no-repeat right center;  cursor: pointer;vertical-align: middle}
+.moniSel input:hover,
+.moniSel input.open{border-color:#005de6}
+.moniSel em{display:none;position:absolute;top:26px;left:0;padding:4px;box-sizing:border-box;width:100px;max-height:138px;border-width:0 1px 1px;border-style: solid;border-color:#e6e6e6;overflow:auto;}
+.moniSel em a{position:relative;display:block;padding:4px 5px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;transition: background 300ms}
+.moniSel em a:hover{background-color:#005de6;color:#fff;}
+.moniSel .textFull{position:absolute;left:5px;padding:4px 5px;white-space:nowrap;transition:background 300ms}
+.moniSel .textFull:hover{background-color:#005de6;color:#fff;}

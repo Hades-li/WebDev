@@ -377,7 +377,7 @@ span.sn-page-next i{margin-left:7px;border-left:6px solid #b1b1b1;}/*控制灰�
 .normalTb thead th{height:40px;border-bottom: 1px solid #ececec;color:#666;font:400 14px/40px "microsoft yahei";text-align:center;overflow:hidden;text-overflow: ellipsis;white-space:nowrap;}
 .normalTb tbody.tc{text-align:center;}
 .normalTb tbody.tl{text-align:left;}
-.normalTb tbody td{height:40px;color:#999;font:14px/40px;overflow:hidden;text-overflow: ellipsis;white-space:nowrap;}
+.normalTb tbody td{height:40px;color:#999;line-height:40px;font-size:14px;overflow:hidden;text-overflow: ellipsis;white-space:nowrap;}
 .normalTb tbody td a{color:#999;}
 .normalTb tbody tr:hover{background-color:#f5f9e5;}
     /*个人信息表格*/
