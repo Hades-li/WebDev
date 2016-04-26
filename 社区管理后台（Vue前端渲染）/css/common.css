@@ -1,0 +1,64 @@
+@charset "utf-8";
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,form,fieldset,legend,button,input,textarea,th,td{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5 arial,tahoma,\5b8b\4f53;color:#333;background:#fff;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+em,i{font-style:normal;}
+fieldset,img{border:0;}
+ul,ol{list-style:none;}
+a{color:#333;text-decoration:none;outline:none;}
+img{border:none;}
+textarea{resize:none;}
+button,input,select,textarea{font-size:100%;outline:none}
+table{border-spacing:0;border-collapse:collapse;}
+.hide{display:none;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{zoom:1;}
+.hide-text{text-indent:-100%;overflow:hidden;}
+.fr{float:right;}
+.fl{float:left;}
+
+.block{display:block !important;}
+.db{display:block;}
+.dib{display:inline-block!important;}
+.wb{word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;}
+.of{overflow:hidden;word-wrap:break-word;word-break:break-all;white-space:nowrap;text-overflow:ellipsis;}
+.ofh{overflow: hidden;}
+.pa{position: absolute;}
+.pr{position:relative;}
+.gray6{color:#666;}
+.gray9{color:#999;}
+.ml10{margin-left: 10px!important;}
+.mr10{margin-right: 10px!important;}
+.mt5{margin-top:5px;!important;}
+.mt10{margin-top: 10px!important;}
+.mb10{margin-bottom: 10px!important;}
+.mb20{margin-bottom: 20px!important;}
+.mr25{margin-right: 25px!important;}
+.mr50{margin-right: 50px!important;}
+
+.pd-layout{padding:10px!important;}
+.pl10{padding-left: 10px!important;}
+.pr10{padding-right: 10px!important;}
+.pt10{padding-top: 10px!important;}
+.pb10{padding-bottom: 10px!important;}
+.pb30{padding-bottom: 30px!important;}
+.pt30{padding-top:30px!important;}
+.pt20{padding-top:20px!important;}
+.pb20{padding-bottom:20px!important;}
+
+.ptb15{padding-top:15px;padding-bottom:15px;}
+.ptb10{padding-bottom: 10px;padding-top: 10px;}
+.plr15{padding-left:15px;padding-right:15px;}
+.plr30{padding-left:30px!important;padding-right:30px!important;}
+.plr50{padding-left:50px!important;;padding-right:50px!important;}
+
+.text-right{text-align:right!important;}
+.text-left{text-align:left!important;}
+.text-center{text-align:center!important;}
+
+.vertical-top{vertical-align:top;}
+
+.no-border{border:0 none!important;}
+
+.bg-gray{background:#F6F6F6;}
+.has-def-con{color:#333;}

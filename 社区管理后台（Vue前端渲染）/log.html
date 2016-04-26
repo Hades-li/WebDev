@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>操作日志</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="head">
+    <div class="head-content clearfix">
+        <img width="40" height="40" src="temp/head.png" alt="logo">
+        <h3>手办社区</h3>
+        <div class="btn-wrap">
+            <a href="javascript:" class="setIdBtn">
+                <span>某某某</span><em>账号设置</em>
+            </a>
+            <ul>
+                <li>
+                    <a href="password.html">修改密码</a>
+                </li>
+                <li>
+                    <a href="javascript:">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="l-wrap">
+        <div class="menu">
+            <h3>菜单</h3>
+            <dl>
+                <dt class="open">
+                    <a href="javascript:">社区后台管理</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">管理员管理</a>
+                    <a href="javascript:">操作日志</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">社区新闻图片</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">轮播图管理</a>
+                    <a href="javascript:">公告管理</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">内容管理列表</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">作品管理</a>
+                    <a href="javascript:">角色管理</a>
+                    <a href="javascript:">关联管理</a>
+                    <a href="javascript:">手办管理</a>
+                    <a href="javascript:">测评管理</a>
+                    <a href="javascript:">标签管理</a>
+                    <a href="javascript:">标签关联</a>
+                    <a href="javascript:">图片管理</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">日常管理列表</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">用户管理</a>
+                    <a href="javascript:">屏蔽词管理</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="mn">
+        <div class="r-wrap">
+            <div class="bread">
+                <a href="javascript:">手办社区</a>
+                <em class="fangsong">&gt;</em>
+                <a href="javascript:">修改密码</a>
+            </div>
+            <div id="v-log" class="m-content">
+                <div class="form-tb">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <select class="normal-sel" v-model="type">
+                                    <option value="1">添加管理员</option>
+                                    <option value="2">删除管理员</option>
+                                    <option value="3">冻结管理员</option>
+                                    <option value="4">解冻管理员">解封管理员</option>
+                                    <option value="5">冻结用户</option>
+                                    <option value="6">解冻用户</option>
+                                    <option value="7">禁言用户</option>
+                                    <option value="8">添加积分</option>
+                                    <option value="9">扣除积分</option>
+                                    <option value="10">编辑测评</option>
+                                    <option value="11">编辑手办</option>
+                                    <option value="12">编辑角色</option>
+                                    <option value="13">编辑作品</option>
+                                    <option value="14">删除评测</option>
+                                    <option value="15">删除手办</option>
+                                    <option value="16">删除角色</option>
+                                    <option value="17">删除作品</option>
+                                    <option value="18">删除图片</option>
+                                    <option value="19">替换图片</option>
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>管理员id：</th>
+                            <td>
+                                <input class="normal-input" type="text" v-model='admin_name'/>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>时间范围：</th>
+                            <td>
+                                <input type="text" class="normal-input" onclick="WdatePicker()" v-model="start_time" />
+                                <em class="ml10 mr10">--</em>
+                                <input type="text" class="normal-input" onclick="WdatePicker()" v-model="end_time"/>
+                            </td>
+                            <td>
+                                <a class="normalBtn ok ml10" href="javascript:" v-on:click="search(0)">查询</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <table class="normal-tb mt10">
+                    <thead>
+                    <tr>
+                        <th width="220">时间</th>
+                        <th width="100">管理员账号</th>
+                        <th width="300">操作记录</th>
+                        <th>所在IP</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in list">
+                        <td>
+                            {{item.create_time}}
+                        </td>
+                        <td>
+                            {{item.admin_name}}
+                        </td>
+                        <td>
+                            {{logs(item.type,item.target_name,item.value)}}
+                        </td>
+                        <td>
+                            {{item.ip_address}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div v-if="indexs > 1" class="page-bar clearfix pt20">
+                    <ul>
+                        <li v-if="cur > 0"><a v-on:click="search(--cur)">上一页</a></li>
+                        <li v-for="index in indexs"  v-bind:class="{ 'active': cur == index}">
+                            <a v-on:click="search(index)">{{ index+1 }}</a></li><li v-if="cur < indexs -1">
+                        <a v-on:click="search(++cur)">下一页</a></li>
+                        <li>
+                            <a>共<i>{{indexs}}</i>页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/lib/jquery-1.11.3.min.js"></script>
+<script src="js/lib/DatePicker/WdatePicker.js"></script>
+<script src="js/lib/vue.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        var logUrl = ma.host + 'log/query';
+        var v_log = new Vue({
+            el:'#v-log',
+            data:{
+                type:'',
+                admin_name:'',
+                start_time:'',
+                end_time:'',
+                list:[],
+                total:0,
+                pageSize:10,
+                cur:0
+            },
+            computed:{
+                indexs:function () {
+                    console.log(this.total);
+                    var pageNum = Math.ceil(this.total/this.pageSize);
+                    console.log(pageNum);
+                    return pageNum;
+                }
+            },
+            methods:{
+                search:function (index) {
+                    var vm = this;
+                    if(index != vm.cur){
+                        vm.cur = index;
+                    }
+                    ma.myAjax({
+                        url:logUrl,
+                        data:{
+                            type:parseInt(vm.type),
+                            admin_name:vm.admin_name,
+                            start_time:vm.start_time,
+                            end_time:vm.end_time,
+                            index:index,
+                            size:vm.pageSize
+                        },
+                        success:function (data) {
+                            console.log(data);
+                            if(data.code == 0){
+                                vm.list = data.result.list;
+                                vm.total = data.result.total;
+                            }else{
+                                alert('查询失败');
+                            }
+                        },
+                        error:function (data) {
+
+                        }
+                    })
+                },
+                logs:function (type,target_name,value) {
+                    var str = '';
+                    if(value == null){
+                        value = '';
+                    }
+                    switch(type){
+                        case 1:
+                            str = "添加管理员 " + target_name + " " + value;
+
+                            break;
+                        case 2:
+                            str = "删除管理员 " + target_name+ " " + value;
+
+                            break;
+                        case 3:
+                            str = "冻结管理员 " + target_name+ value;
+
+                            break;
+                        case 4:
+                            str = "解冻管理员" + target_name+ value;
+
+                            break;
+                        case 5:
+                            str = "冻结用户" + target_name+ value;
+
+                            break;
+                        case 6:
+                            str = "解冻用户" +target_name+ value;
+
+                            break;
+                        case 7:
+                            str = "禁言用户" +target_name+ value;
+
+                            break;
+                        case 8:
+                            str = "给"+target_name+"添加"+value+"积分";
+                            break;
+                        case 9:
+                            str = "添加积分" +target_name+ value;
+
+                            break;
+                        case 10:
+                            str = "扣除积分" +target_name+ value;
+
+                            break;
+                        case 11:
+                            str = "编辑评测" +target_name+ value;
+
+                            break;
+                        case 12:
+                            str = "编辑手办" +target_name+ value;
+
+                            break;
+                        case 13:
+                            str = "编辑"+ target_name + "作品标题";
+                            break;
+                        case 14:
+                            str = "删除评测" +target_name+ value;
+
+                            break;
+                        case 15:
+                            str = "删除手办" +target_name+ value;
+
+                            break;
+                        case 16:
+                            str = "删除角色" +target_name+ value;
+
+                            break;
+                        case 17:
+                            str = "删除作品" +target_name+ value;
+
+                            break;
+                        case 18:
+                            str = "删除图片" +target_name+ value;
+
+                            break;
+                        case 19:
+                            str = "替换图片" +target_name+ value;
+
+                            break;
+                    }
+                    return str;
+                }
+
+            }
+        })
+    })
+</script>
+</body>
+</html>

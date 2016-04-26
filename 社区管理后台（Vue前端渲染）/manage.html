@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <title>管理账号</title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="js/lib/layer/skin/layer.css">
+</head>
+<body>
+<div class="head">
+    <div class="head-content clearfix">
+        <img width="40" height="40" src="temp/head.png" alt="logo">
+        <h3>手办社区</h3>
+        <div class="btn-wrap">
+            <a href="javascript:" class="setIdBtn">
+                <span>某某某</span><em>账号设置</em>
+            </a>
+            <ul>
+                <li>
+                    <a href="password.html">修改密码</a>
+                </li>
+                <li>
+                    <a href="javascript:">退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="l-wrap">
+        <div class="menu">
+            <h3>菜单</h3>
+            <dl>
+                <dt class="open">
+                    <a href="javascript:">社区后台管理</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">管理员管理</a>
+                    <a href="javascript:">操作日志</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">社区新闻图片</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">轮播图管理</a>
+                    <a href="javascript:">公告管理</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">内容管理列表</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">作品管理</a>
+                    <a href="javascript:">角色管理</a>
+                    <a href="javascript:">关联管理</a>
+                    <a href="javascript:">手办管理</a>
+                    <a href="javascript:">测评管理</a>
+                    <a href="javascript:">标签管理</a>
+                    <a href="javascript:">标签关联</a>
+                    <a href="javascript:">图片管理</a>
+                </dd>
+                <dt class="open">
+                    <a href="javascript:">日常管理列表</a>
+                </dt>
+                <dd>
+                    <a href="javascript:">用户管理</a>
+                    <a href="javascript:">屏蔽词管理</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="mn">
+        <div class="r-wrap">
+            <div class="bread">
+                <a href="javascript:">手办社区</a>
+                <em class="fangsong">&gt;</em>
+                <span href="javascript:">管理员管理</span>
+            </div>
+            <div class="m-content">
+                <ul class="tab-btns clearfix">
+                    <li>
+                        <a class="active" href="javascript:">添加用户</a>
+                    </li>
+                    <li>
+                        <a class="" id="tab-user" href="javascript:">用户管理</a>
+                    </li>
+                    <li>
+                        <a class="" href="javascript:">添加用户组</a>
+                    </li>
+                    <li>
+                        <a href="javascript:" id = 'tab-group'>用户组管理</a>
+                    </li>
+                </ul>
+                <div class="tab-body">
+                    <div id="v-adduser" class="content" style="display: block">
+                        <div class="form-tb">
+                            <p v-show="error" class="err">{{error}}</p>
+                            <table>
+                                <tr>
+                                    <th width="100">账号：</th>
+                                    <td>
+                                        <input class="normal-input" type="text" v-model="admin_name" v-on:blur="compareID" placeholder="请输入用户名" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>昵称：</th>
+                                    <td>
+                                        <input class="normal-input" type="text" v-model="admin_nickname" placeholder="请输入昵称"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>密码：</th>
+                                    <td>
+                                        <input class="normal-input" type='password' v-model="password" placeholder="请输入密码"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>确认密码：</th>
+                                    <td>
+                                        <input class="normal-input" type="password" v-model="confirmPs" placeholder="请确认密码"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>所属用户组：</th>
+                                    <td>
+                                        <select class="normal-sel" v-model="group_id">
+                                            <option selected v-for="item in userGroup" v-bind:value="item.group_id">{{item.group_name}}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td>
+                                        <a class="normalBtn ok mr10" href="javascript:" v-on:click="verification">添加用户</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="v-userManage" class="content" style="display: none;">
+                        <table class="normal-tb">
+                            <thead>
+                            <tr>
+                                <th width="80">账号</th>
+                                <th width="80">昵称</th>
+                                <th width="120">所属用户组</th>
+                                <th width="120">账号状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="(index,item) in list">
+                                <td>{{item.admin_name}}</td>
+                                <td>{{item.admin_nickname}}</td>
+                                <td>{{item.group_name}}</td>
+                                <td>{{(item.state == 0)?'正常':'冻结'}}</td>
+                                <td>
+                                    <a class="normalBtn ok" href="javascript:" v-on:click="edit(item.admin_id)">编辑</a>
+                                    <!--<a class="normalBtn ok" href="javascript:">修改密码</a>-->
+                                    <a class="normalBtn ok" href="javascript:" v-if="item.state == 0" v-on:click="op(item.admin_id,1)">冻结</a>
+                                    <a class="normalBtn ok" href="javascript:" v-if="item.state == 1" v-on:click="op(item.admin_id,0)">解冻</a>
+                                    <a class="normalBtn cal" href="javascript:" v-on:click="op(item.admin_id,2)">删除</a>
+                                    <!--<a class="normalBtn ok" href="javascript:">操作日志</a>-->
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div v-if="indexs > 1" class="page-bar clearfix pt20">
+                            <ul>
+                                <li v-if="cur > 0"><a v-on:click="btnClick(--cur)">上一页</a></li>
+                                <li v-for="index in indexs"  v-bind:class="{ 'active': cur == index}">
+                                    <a v-on:click="btnClick(index)">{{ index+1 }}</a></li><li v-if="cur < indexs -1">
+                                <a v-on:click="btnClick(++cur)">下一页</a></li>
+                                <li>
+                                    <a>共<i>{{indexs}}</i>页</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="v-addGroup" class="content" style="display: none;">
+                        <div class="form-tb">
+                            <table>
+                                <tr>
+                                    <th width="100">用户组名：</th>
+                                    <td>
+                                        <input class="normal-input" type="text" v-model="group_name"  />
+                                    </td>
+                                    <td class="c-red pl10" v-show="error">
+                                       {{error}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3 class="normal-title">
+                            权限管理
+                        </h3>
+                        <div class="gray-box">
+                            <div class="chk-wrap">
+                                <div class="chk-title">
+                                    <input type="checkbox">
+                                    <label for="">后台管理</label>
+                                </div>
+                                <ul class="chk-list clearfix">
+                                    <li>
+                                        <input type="checkbox" value = "1" v-model="p_admin" />
+                                        <label for="">管理员管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" value="1" v-model="p_log"/>
+                                        <label for="">操作日志</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chk-wrap">
+                                <div class="chk-title">
+                                    <input type="checkbox">
+                                    <label for="">新闻图片</label>
+                                </div>
+                                <ul class="chk-list clearfix">
+                                    <li>
+                                        <input type="checkbox" value="1" v-model="p_banner" />
+                                        <label for="">轮播图管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" value="1" v-model="p_notice" />
+                                        <label for="">公告管理</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chk-wrap">
+                                <div class="chk-title">
+                                    <input type="checkbox">
+                                    <label for="">内容管理</label>
+                                </div>
+                                <ul class="chk-list clearfix">
+                                    <li>
+                                        <input type="checkbox" v-model="p_works"  />
+                                        <label for="">作品管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_role" />
+                                        <label for="">角色管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_map" />
+                                        <label for="">关联管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_shouban" />
+                                        <label for="">手办管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_post" />
+                                        <label for="">评测管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_tag"/>
+                                        <label for="">标签管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_tag_members" />
+                                        <label for="">标签关联</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model="p_pic" />
+                                        <label for="">图片管理</label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="chk-wrap">
+                                <div class="chk-title">
+                                    <input type="checkbox">
+                                    <label for="">日常管理</label>
+                                </div>
+                                <ul class="chk-list clearfix">
+                                    <li>
+                                        <input type="checkbox"  v-model="p_user"/>
+                                        <label for="">用户管理</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox"  v-model = "p_mask" />
+                                        <label for="">屏蔽词管理</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="pt20 pl20">
+                            <a href="javascript:" class="normalBtn ok" v-on:click="add">确认添加</a>
+                        </div>
+                    </div>
+                    <div id="v-groupMange" class="content" style="display: none;">
+                        <table class="normal-tb">
+                            <thead>
+                            <tr>
+                                <th width="140">用户组名</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="item in list">
+                                <td>{{item.group_name}}</td>
+                                <td>
+                                    <a class="normalBtn ok" href="javascript:" v-on:click="edit(item.group_id)">编辑</a>
+                                    <a class="normalBtn cal" href="javascript:" v-on:click="del(item.group_id)">删除</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--弹窗-->
+<div id="v-editGroup" class="pop-editGroup" style="display: none;">
+    <h3 class="normal-title">
+        权限修改
+    </h3>
+    <div class="gray-box">
+        <div class="chk-wrap">
+            <div class="chk-title">
+                <input type="checkbox" />
+                <label for="">后台管理</label>
+            </div>
+            <ul class="chk-list clearfix">
+                <li>
+                    <input type="checkbox" value = "1" v-model="p_admin" />
+                    <label for="">管理员管理</label>
+                </li>
+                <li>
+                    <input type="checkbox" value="1" v-model="p_log"/>
+                    <label for="">操作日志</label>
+                </li>
+            </ul>
+        </div>
+        <div class="chk-wrap">
+            <div class="chk-title">
+                <input type="checkbox" >
+                <label for="">新闻图片</label>
+            </div>
+            <ul class="chk-list clearfix">
+                <li>
+                    <input type="checkbox" v-model="p_banner" />
+                    <label for="">轮播图管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_notice" />
+                    <label for="">公告管理</label>
+                </li>
+            </ul>
+        </div>
+        <div class="chk-wrap">
+            <div class="chk-title">
+                <input type="checkbox">
+                <label for="">内容管理</label>
+            </div>
+            <ul class="chk-list clearfix">
+                <li>
+                    <input type="checkbox" v-model="p_works"  />
+                    <label for="">作品管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_role" />
+                    <label for="">角色管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_map" />
+                    <label for="">关联管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_shouban" />
+                    <label for="">手办管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_post" />
+                    <label for="">评测管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_tag"/>
+                    <label for="">标签管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_tag_members" />
+                    <label for="">标签关联</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model="p_pic" />
+                    <label for="">图片管理</label>
+                </li>
+            </ul>
+        </div>
+        <div class="chk-wrap">
+            <div class="chk-title">
+                <input type="checkbox">
+                <label for="">日常管理</label>
+            </div>
+            <ul class="chk-list clearfix">
+                <li>
+                    <input type="checkbox"  v-model="p_user"/>
+                    <label for="">用户管理</label>
+                </li>
+                <li>
+                    <input type="checkbox"  v-model = "p_mask" />
+                    <label for="">屏蔽词管理</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="v-editUser" class="pop-editUser" style="display: none">
+    <div class="form-tb">
+        <p v-show="error" class="err">{{error}}</p>
+        <table>
+            <tr>
+                <th>昵称：</th>
+                <td>
+                    <input class="normal-input" type="text" v-model="admin_nickname" placeholder="请输入昵称"/>
+                </td>
+            </tr>
+            <tr>
+                <th>密码：</th>
+                <td>
+                    <input class="normal-input" type='password' v-model="password" placeholder="请输入密码"/>
+                </td>
+            </tr>
+            <tr>
+                <th>所属用户组：</th>
+                <td>
+                    <select class="normal-sel" v-model="group_id">
+                        <option selected v-for="item in userGroup" v-bind:value="item.group_id">{{item.group_name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script src="js/lib/jquery-1.11.3.min.js"></script>
+<script src="js/lib/vue.js"></script>
+<script src="js/lib/layer/layer.js"></script>
+<script src="js/main.js"></script>
+<script>
+    $(function () {
+        Vue.config.debug = true;
+        var addUrl = ma.host +'add';
+        var addGroupUrl = ma.host + 'group/add';
+        var delGroupUrl = ma.host + 'group/delete';
+        var userlistUrl = ma.host + 'list';
+        var groupListUrl = ma.host+'group/list';
+        var editGroupUrl = ma.host + 'group/info/edit';
+        var opUserUrl = ma.host + 'manage';
+        var editUserUrl = ma.host + 'info/edit';
+        var groupViewUrl = ma.host + 'group/info/view';
+
+        layer.config({
+            type:1,
+            skin:'my-class',
+            shade:0.3
+
+        });
+//        获得用户列表函数
+        function getUserlist(callback) {
+            ma.myAjax({
+                url:userlistUrl,
+                data:{
+                    index:0,
+                    size:1
+                },
+                success:function (data) {
+//                    console.log('请求用户列表成功');
+                    if(data.code == 0){
+                        var total = data.result.total;
+                        ma.myAjax({
+                            url:userlistUrl,
+                            data:{
+                                index:0,
+                                size:total
+                            },
+                            success:function (data) {
+                                //console.log('请求用户列表成功');
+                                //console.log(data.result.list);
+                                if(data.code == 0){
+                                    callback(data.result.list);
+                                }
+                            },
+                            error:function (data) {
+                                //console.log('请求失败');
+                            }
+                        })
+                    }
+
+                },
+                error:function (data) {
+
+                }
+
+            })
+        }
+
+//        获得用户组函数
+        function getUserGplist(callback){
+            ma.myAjax({
+                url:groupListUrl,
+                data:{
+                    index:0,
+                    size:1
+                },
+                success:function (data) {
+                    var total = data.result.total;
+                    ma.myAjax({
+                        url:groupListUrl,
+                        data:{
+                            index:0,
+                            size:total
+                        },
+                        success:function (data) {
+                            callback(data.result.list);
+                        }
+                    })
+                },
+                error:function(data){
+                    //console.log(data);
+                }
+            });
+        }
+
+        //添加用户页面
+        var v_adduser = new Vue({
+            el:'#v-adduser',
+            data:{
+                    userGroup:[],
+                    admin_name:'',
+                    admin_nickname:'',
+                    password:'',
+                    confirmPs:'',
+                    group_id:'',
+                    error:''
+                },
+            methods:{
+//                添加用户
+                addUser:function () {
+                    var vm = this;
+                    if(!vm.error){
+                        ma.myAjax({
+                            url:addUrl,
+                            type:'post',
+                            data:{
+//                                admin_session_id:'7d9616908b40afc9e10f',
+                                admin_name:vm.admin_name,
+                                admin_nickname:vm.admin_nickname,
+                                password:vm.password,
+                                group_id:vm.group_id
+                            },
+                            success:function (data) {
+                                //console.log(data);
+                                if(data.code == 0){
+                                    alert('添加用户成功');
+                                    vm.admin_name = '';
+                                    vm.admin_nickname = '';
+                                    vm.password = '';
+                                    vm.confirmPs = '';
+                                }else{
+                                    alert('报错码:'+data.code);
+                                }
+                            },
+                            error:function (data) {
+                                //console.log('报错：');
+                                //console.log(data)
+                            }
+                        })
+                    }
+                },
+//                比较ID号是否重复
+                compareID:function () {
+                    var vm = this;
+                    if($.trim(vm.admin_name)){
+                        getUserlist(function (list) {
+                            for(var i = 0;i < list.length;i ++ ){
+                                if(vm.admin_name == list[i].admin_name){
+                                    vm.error = '账号已存在';
+                                    return false;
+                                }
+                            }
+                            vm.error = '';
+                        })
+                    }
+                },
+//                比较密码
+                comparePS:function () {
+                    var vm = this;
+                    vm.error = '';
+                    if(vm.password != vm.confirmPs){
+                        vm.error = '密码确认不正确';
+                    }
+
+                },
+//                验证
+                verification:function () {
+                    var vm = this;
+                    vm.error = '';
+                    if(vm.password != vm.confirmPs){
+                        vm.error = '密码确认不正确';
+                    }else if($.trim(vm.password) == ''){
+                        vm.error = "密码不能为空";
+                    }else if($.trim(vm.admin_name) == ''){
+                        vm.error = "账户名不能为空";
+                    }else if($.trim(vm.admin_nickname) == ''){
+                        vm.error = "昵称不能为空";
+                    }else if($.trim(vm.group_id) == ''){
+                        vm.error = "用户组不能为空";
+                    }else {
+                        this.addUser();
+                    }
+
+                }
+            },
+            ready:function () {
+
+            }
+        });
+
+        //用户组管理
+        var v_groupMange = new Vue({
+            el:'#v-groupMange',
+            data:{
+                list:[]
+            },
+            methods:{
+                del:function (id) {
+                    var vm = this;
+                    //console.log(id);
+                    ma.myAjax({
+                        url:delGroupUrl,
+                        type:'post',
+                        data:{
+                            group_id:id
+                        },
+                        success:function (data) {
+                            if(data.code == 0){
+                                alert('删除成功');
+                                vm.updateGroup();
+                            }
+                        },
+                        error:function (data) {
+                            //console.log(data);
+                        }
+                    })
+
+                },
+                edit:function (id) {
+                    layer.open({
+                        title:'修改用户组',
+                        content:$('.pop-editGroup'),
+                        area:'50%',
+                        btn:['修改','取消'],
+                        success:function (index,layero) {
+                            $(layero).find('.chk-title input:checkbox').prop('checked',false);
+                            v_editGroup.update(id);
+                        },
+                        yes:function (index,layero) {
+                            v_editGroup.edit();
+                            layer.close(index);
+                        },
+                        cancel:function (index) {
+                            
+                        }
+                    })
+                },
+                updateGroup:function () {
+                    getUserGplist(function (list) {
+                        //console.log(list);
+                        v_adduser.$set('userGroup',list);
+                        v_adduser.$set('group_id',list[0].group_id);
+                        v_groupMange.$set('list',list);
+                    })
+                }
+            }
+        });
+
+        //添加用户组
+        var v_addGroup = new Vue({
+            el:'#v-addGroup',
+            data: {
+                error:'',
+                group_name: '',
+                p_admin: false,//管理员管理权限，0-未勾选，1-勾选
+                p_log: false,//操作日志权限
+                p_banner: false,
+                p_notice: false,
+                p_works: false,
+                p_role: false,
+                p_shouban: false,
+                p_post: false,
+                p_tag: false,
+                p_map: false,
+                p_tag_members: false,
+                p_pic: false,
+                p_user: false,
+                p_mask: false
+            },
+            methods:{
+                add:function () {
+                    var vm = this;
+                    vm.verification(function () {
+                        ma.myAjax({
+                            url:addGroupUrl,
+                            type:'post',
+                            data:{
+                                group_name: vm.group_name,
+                                p_admin: vm.p_admin ? 1:0,
+                                p_log: vm.p_log ? 1:0,
+                                p_banner: vm.p_banner ? 1:0,
+                                p_notice: vm.p_notice ? 1:0,
+                                p_works: vm.p_works ? 1:0,
+                                p_role: vm.p_role ? 1:0,
+                                p_shouban: vm.p_shouban ? 1:0,
+                                p_post: vm.p_post ? 1:0,
+                                p_tag: vm.p_tag ? 1:0,
+                                p_map: vm.p_map ? 1:0,
+                                p_tag_members: vm.p_tag_members ? 1:0,
+                                p_pic: vm.p_pic ? 1:0,
+                                p_user: vm.p_user ? 1:0,
+                                p_mask: vm.p_mask ? 1:0
+                            },
+                            success:function (data) {
+                                //console.log('添加用户组请求返回code：'+data.code);
+                                if(data.code == 0){
+                                    alert('用户组添加成功');
+                                    vm.group_name = '';
+                                }
+                            },
+                            error:function (data) {
+                                //console.log('添加请求失败');
+                            }
+                        })
+                    },function () {
+
+                    });
+                },
+//                校验
+                verification:function (sucCallback,errCallback) {
+                    var vm = this;
+                    vm.error = '';
+                    if($.trim(vm.group_name) != ''){
+                        getUserGplist(function (list) {
+                            for(var i = 0;i < list.length;i ++){
+                                //console.log(list[i].group_name);
+                                if(vm.group_name == list[i].group_name){
+                                    vm.error = '用户组名已存在';
+                                    return false;
+                                }
+                            }
+                            if(vm.error == ''){
+                                sucCallback();
+                            }else{
+                                errCallback();
+                            }
+                        })
+                    }else{
+                        vm.error = '用户组名不能为空';
+                        errCallback();
+                    }
+                }
+            }
+
+        });
+
+        //编辑用户组
+        var v_editGroup = new Vue({
+            el:'#v-editGroup',
+            data:{
+                group_id: '',
+                p_admin: false,//管理员管理权限，0-未勾选，1-勾选
+                p_log: false,//操作日志权限
+                p_banner: false,
+                p_notice: false,
+                p_works: false,
+                p_role: false,
+                p_shouban: false,
+                p_post: false,
+                p_tag: false,
+                p_map: false,
+                p_tag_members: false,
+                p_pic: false,
+                p_user: false,
+                p_mask: false
+            },
+
+            methods:{
+                update:function (group_id) {
+                    var vm = this;
+                    ma.myAjax({
+                        url:groupViewUrl,
+                        data:{
+                            group_id:group_id
+                        },
+                        success:function (data) {
+                            if(data.code == 0){
+                                //console.log(data.result);
+                                vm.group_id = group_id;
+                                vm.p_admin=data.result.p_admin;//管理员管理权限，0-未勾选，1-勾选
+                                vm.p_log=data.result.p_log;//操作日志权限
+                                vm.p_banner= data.result.p_banner;
+                                vm.p_notice= data.result.p_notice;
+                                vm.p_works= data.result.p_works;
+                                vm.p_role= data.result.p_role;
+                                vm.p_shouban= data.result.p_shouban;
+                                vm.p_post= data.result.p_post;
+                                vm.p_tag= data.result.p_tag;
+                                vm.p_map= data.result.p_map;
+                                vm.p_tag_members= data.result.p_tag_members;
+                                vm.p_pic= data.result.p_pic;
+                                vm.p_user= data.result.p_user;
+                                vm.p_mask= data.result.p_mask;
+                            }else{
+                                alert('获取用户组资料失败');
+                            }
+                        },
+                        error:function (data) {
+
+                        }
+                    })
+                },
+//                确认修改
+                edit:function () {
+                    var vm = this;
+                    //console.log(vm.$data);
+                    ma.myAjax({
+                        url:editGroupUrl,
+                        type:'post',
+                        data:{
+                            group_id: vm.group_id,
+                            p_admin: vm.p_admin ? 1:0,
+                            p_log: vm.p_log ? 1:0,
+                            p_banner: vm.p_banner ? 1:0,
+                            p_notice: vm.p_notice ? 1:0,
+                            p_works: vm.p_works ? 1:0,
+                            p_role: vm.p_role ? 1:0,
+                            p_shouban: vm.p_shouban ? 1:0,
+                            p_post: vm.p_post ? 1:0,
+                            p_tag: vm.p_tag ? 1:0,
+                            p_map: vm.p_map ? 1:0,
+                            p_tag_members: vm.p_tag_members ? 1:0,
+                            p_pic: vm.p_pic ? 1:0,
+                            p_user: vm.p_user ? 1:0,
+                            p_mask: vm.p_mask ? 1:0
+                        },
+                        success:function (data) {
+                            //console.log('修改用户组请求返回code：'+ data.code);
+                            if(data.code == 0){
+                                alert('修改用户组成功');
+                                v_groupMange.updateGroup();
+                            }
+                        },
+                        error:function (data) {
+                            //console.log('修改用户组请求失败');
+                        }
+                    })
+                }
+            }
+        });
+
+        //用户管理
+        var v_userManage = new Vue({
+            el:'#v-userManage',
+            data:{
+                total:0,
+                pageSize:10,
+                list:[],
+                cur:0
+            },
+            computed:{
+                indexs:function () {
+                    //console.log(this.total);
+                    var pageNum = Math.ceil(this.total/this.pageSize);
+                    //console.log(pageNum);
+                    return pageNum;
+                }
+            },
+            ready:function () {
+                var vm = this;
+                vm.updateList();
+            },
+            methods:{
+                btnClick:function (index) {
+                    var vm = this;
+                    if(index != vm.cur){
+                        vm.cur = index;
+                    }
+                    vm.getUserList(index,vm.pageSize,function (list,total) {
+                        vm.total = total;
+                        vm.list = list;
+                    });
+                },
+                edit:function (id) {
+                    layer.open({
+                        title:'修改用户资料',
+                        content:$('.pop-editUser'),
+                        area:'50%',
+                        btn:['修改','取消'],
+                        yes:function (index,layero) {
+                            v_editUser.edit(id);
+                            layer.close(index);
+                        },
+                        cancel:function (index) {
+
+                        }
+                    })
+                },
+                op:function (id,state) {
+                    var vm = this;
+                    var rsStr = '';
+                    switch (state){
+                        case 0:
+                            rsStr = '解冻';
+                            break;
+                        case 1:
+                            rsStr = '冻结';
+                            break;
+                        case 2:
+                            rsStr = '删除';
+                            break;
+                    }
+                    layer.confirm('确认'+rsStr+'?',{
+                        btn: ['确认','取消']
+                        },function (index) {
+                        ma.myAjax({
+                            url:opUserUrl,
+                            type:'post',
+                            data:{
+                                admin_id:id,
+                                op:state
+                            },
+                            success:function (data) {
+                                //console.log('用户管理操作op请求:' + data.code);
+                                if(data.code == 0){
+                                    layer.close(index);
+                                    alert(rsStr+'成功');
+                                    vm.updateList();
+                                }
+                            },
+                            error:function (data) {
+
+                            }
+                        })
+                    },function () {
+
+                    });
+                },
+                getUserList:function (index,size,callback) {
+                    ma.myAjax({
+                        url:userlistUrl,
+                        data:{
+                            index:index,
+                            size:size
+                        },
+                        success:function (data) {
+                            //console.log('请求用户列表成功');
+                            //console.log(data.result.list);
+                            //console.log(data.result.total);
+                            if(data.code == 0){
+                                if(callback){
+                                    callback(data.result.list,data.result.total);
+                                }
+                            }
+                        },
+                        error:function (data) {
+                            //console.log('请求失败');
+                        }
+                    })
+                },
+                updateList:function () {
+                    var vm = this;
+                    vm.getUserList(vm.cur,vm.pageSize,function (list,total) {
+                        vm.total = total;
+                        vm.list = list;
+                    });
+                }
+            }
+        });
+
+        //编辑用户资料
+        var v_editUser = new Vue({
+            el:'#v-editUser',
+            data:{
+//                    admin_id:'',
+                    admin_nickname:'',
+                    group_id:'',
+                    password:'',
+                    userGroup:[]
+                },
+            ready:function () {
+                var vm = this;
+                vm.getGroup();
+            },
+            methods:{
+                getGroup:function () {
+                    var vm = this;
+                    getUserGplist(function (list) {
+                        vm.userGroup = list;
+                        vm.group_id = list[0].group_id;
+                    })
+                },
+                edit:function (id) {
+                    var vm = this;
+                    //console.log(vm.group_id);
+                    ma.myAjax({
+                        url:editUserUrl,
+                        type:'post',
+                        data:{
+                            admin_id:id,
+                            admin_nickname:vm.admin_nickname,
+                            group_id:vm.group_id,
+                            password:vm.password
+                        },
+                        success:function (data) {
+                            //console.log('编辑用户请求成功:',data.code);
+                            if(data.code == 0){
+                                alert('编辑用户成功');
+                                v_userManage.updateList();
+                            }
+                        },
+                        error:function (data) {
+
+                        }
+                    })
+                }
+            }
+        });
+
+        //tab切点击刷新
+        $('#tab-user').click(function () {
+            v_userManage.updateList();
+        });
+        $('#tab-group').click(function () {
+           v_groupMange.updateGroup();
+        });
+
+        getUserGplist(function (list) {
+            v_adduser.$set('userGroup',list);
+            v_adduser.$set('group_id',list[0].group_id);
+            v_groupMange.$set('list',list);
+        })
+    })
+</script>
+</body>
+</html>
