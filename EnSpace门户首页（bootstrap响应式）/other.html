@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="author" content="plusLi" />
+    <meta name="description" content="En space" />
+    <meta name="keywords"  content="En space" />
+    <title>En Space</title>
+    <style>
+        p{font-size: 20px;text-align:center;}
+    </style>
+    <script>
+        var DEFAULT_VERSION = "8.0";
+        var ua = navigator.userAgent.toLowerCase();
+        var isIE = ua.indexOf("msie")>-1;
+        var safariVersion;
+        if(isIE){
+            safariVersion =  ua.match(/msie ([\d.]+)/)[1];
+            if(safariVersion *1 <= DEFAULT_VERSION*1 ){
+                // 跳转至页面1
+            }else{
+                // 跳转至页面2
+                window.location.href = 'index.html'
+            }
+        }else{
+            // 跳转至页面2
+            window.location.href = 'index.html'
+        }
+    </script>
+</head>
+<body class="b-pd">
+    <p>请升级浏览器版本，或选择firefox,chrome浏览器</p>
+</body>
+</html>

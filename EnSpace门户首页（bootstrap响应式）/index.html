@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="author" content="plusLi" />
+    <meta name="description" content="En space" />
+    <meta name="keywords"  content="En space" />
+    <link rel="stylesheet" href="dist/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="dist/slider/css/sangarSlider.css">
+    <title>En Space</title>
+    <script>
+        var DEFAULT_VERSION = "8.0";
+        var ua = navigator.userAgent.toLowerCase();
+        var isIE = ua.indexOf("msie")>-1;
+        var safariVersion;
+        if(isIE){
+            safariVersion =  ua.match(/msie ([\d.]+)/)[1];
+            if(safariVersion*1 <= DEFAULT_VERSION*1 ){
+                // 跳转至页面1
+                window.location.href = 'other.html'
+            }else{
+                // 跳转至页面2
+//                window.location.href = 'index.html'
+            }
+        }else{
+            // 跳转至页面2
+//            window.location.href = 'index.html'
+        }
+    </script>
+</head>
+<body class="b-pd">
+    <div class="section fullpage">
+        <div class="fg">
+
+        </div>
+        <div class="slideImg">
+            <div class="sangar-example" style="width:100%;">
+                <div class="sangar-content">
+                    <img src="images/p1.jpg" alt="">
+                </div>
+                <div class="sangar-content">
+                    <img src="images/p2.jpg" alt="">
+                </div>
+                <div class="sangar-content">
+                    <img src="images/p3.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="menu">
+            <em class="en">
+                <img class="logo-t" src="images/logo_text.png" alt="">
+                <a href="#mark">En Space</a>
+            </em>
+            <a href="javascript:">品牌故事</a>
+            <a href="javascript:">品牌图库</a>
+            <a href="javascript:">品牌活动</a>
+            <a href="javascript:">会员服务</a>
+            <a href="javascript:">联系我们</a>
+            <a href="javascript:">En</a>
+
+        </div>
+    </div>
+    <div class="section" id="mark">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-wrap col-md-6">
+                    <div class="imgBox bg-1 noSee">
+                        <div class="v-bottom">
+                            <a class="lineBtn black" href="javascript:"><em class="l-line"></em>赋予美食更多空间与新意<em class="r-line"></em></a>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-wrap col-md-6" >
+                    <div class="imgBox bg-2 noSee">
+                        <div class="v-bottom">
+                            <a class="lineBtn" href="javascript:"><em class="l-line"></em>浏览品牌图库<em class="r-line"></em></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-wrap col-md-6">
+                    <div class="imgBox bg-5 noSee"></div>
+                </div>
+                <div id="lastRow" class="col-wrap col-md-12">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-wrap col-md-3 visible-md visible-lg">
+                                <div class="imgBox noSee"></div>
+                            </div>
+                            <div class="col-wrap col-md-3">
+                                <div class="imgBox bg-3 noSee">
+                                    <div class="v-bottom">
+                                        <a class="lineBtn" href="javascript:"><em class="l-line"></em>品 牌 活 动<em class="r-line"></em></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-wrap col-md-3">
+                                <div class="imgBox bg-6 noSee"></div>
+                            </div>
+                            <div class="col-wrap col-md-3">
+                                <div class="imgBox bg-4 noSee">
+                                    <div class="v-bottom">
+                                        <a class="lineBtn" href="javascript:"><em class="l-line"></em>展 开 艺 与 食 之 旅<em class="r-line"></em></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footRow row">
+                <div class="footLogo col-md-6 text-center">
+                    <img src="images/footer-logo.png" alt="En Space">
+                </div>
+                <div class="col-md-6">
+                    <ul class="ads-list text-left">
+                        <li class="time">10:00AM --- 22:00PM</li>
+                        <li class="adr">秦淮区扫帚巷8号</li>
+                        <li class="phone">025-52657778</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyrights clearfix">
+        <p>VIA VITTORIO EMANUELE II, 115 BRESCIA</p>
+        <p>P.IVA 03397530175</p>
+        <p>P. +39 030 41031</p>
+        <p>INFO@GELATERIADELBIONDO.IT</p>
+        <p>SKYPE: GELATERIADELBIONDO</p>
+        <p>DESIGN BY PlusLi</p>
+    </div>
+
+    <!--悬浮菜单-->
+    <div class="xf-nav">
+        <a class="xfBtn" href="javascript:">
+            <em></em>
+        </a>
+    </div>
+    <div class="grayCover">
+        <ul class="xf-list">
+            <li><a href="javascript:">品牌故事</a></li>
+            <li><a href="javascript:">品牌图库</a></li>
+            <li><a href="javascript:">品牌活动</a></li>
+            <li><a href="javascript:">会员服务</a></li>
+            <li><a href="javascript:">联系我们</a></li>
+            <li><a href="javascript:">En</a></li>
+        </ul>
+    </div>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="dist/slider/lib/jquery.touchSwipe.min.js"></script>
+    <script src="dist/slider/lib/imagesloaded.min.js"></script>
+    <script src="dist/bootstrap/js/bootstrap.js"></script>
+    <script src="dist/slider/js/sangarSlider.js"></script>
+    <script src="js/main.js"></script>
+<script>
+    jQuery(document).ready(function($) {
+        $('.sangar-example').sangarSlider({
+            timer : true, // true or false to have the timer
+            fullWidth : true, // slider will scale to the container size
+            fullHeight : true // slideshow height will resize to browser height
+//            height:100
+
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+@import "common.css";
+$sm-w:768px;
+$md-w:992px;
+$lg-w:1200px;
+$grid-gutter-width:0;
+body,html{height:100%}
+.b-pd{
+  padding:4px;background-color:#d5d0ca;
+  @media (min-width:$md-w) {
+    padding:18px;
+  }
+}
+.fullpage{position:relative;height:100%;text-align:center}
+
+.fg{position:absolute;left:0;top:0;width:100%;height:100%;background:url(images/fg.png) center top no-repeat;background-size:100%;z-index:500;}
+
+@media (min-width:$md-w) {
+  .fg{position:absolute;left:0;top:0;width:100%;height:100%;background:url(images/fg.png) top right no-repeat;background-size:auto 100%;z-index:500;}
+}
+.slideImg{height: 100%;overflow:hidden;}
+
+//第一屏
+.menu{
+  position:absolute;left:0;bottom:80px;width:100%;z-index:600;
+  &.head{position:relative;left:auto;bottom:auto;padding-left:100px;padding-top:30px;z-index:600;}
+  .en{
+    display:inline-block;position:relative;
+    .logo-t{position:absolute;left:50%;max-width:none;margin-left:-115px;top:-68px;}
+    a{
+      position:relative;display:inline-block;width:144px;height:50px;border:2px solid #dadbd9;font:16px/48px "Microsoft yahei";color:#fff;text-align:center;
+      transition: all 500ms;
+      &:hover{
+        text-decoration:none;background-color:#dadbd9;color:#484746;
+
+      }
+      &:after{position:absolute;bottom:-18px;left:50%;margin-left:-5px;content:'';display:block;width:10px;height:25px;background:url(images/arrowDown.png) no-repeat;transition:all 500ms}
+      &:hover:after{bottom:-40px;opacity:0;}
+    }
+
+  }
+
+  a{
+    display:none;
+    &:hover{text-decoration:none;}
+  }
+  @media (min-width:$md-w) {
+    a{
+      display:inline-block;width:13%;height:50px;font:16px/48px "Microsoft yahei";color:#fff;text-align:center;
+    }
+  }
+
+
+  ul{
+    padding:0 10%;
+
+    li{
+      position:relative;float:left;width:10%;text-align:center;
+
+      &:last-child{width:10%}
+    }
+  }
+}
+
+//第二屏
+.lineBtn{
+  position:relative;display:inline-block;padding:0 20px;border:2px solid #fff;color:#fff;font:16px/36px "Microsoft Yahei";
+  transition:all 500ms;
+  em{
+    position:absolute;top:50%;display:inline-block;width:23px;height:2px;background-color:#fff;
+    transition: all 500ms;
+    &.l-line{left:-12px;}
+    &.r-line{right:-12px;}
+  }
+  &.black{
+    border-color:#484746;color:#484746;
+    em{background-color:#484746;}
+  }
+  &:hover{
+    text-decoration:none;background-color:#fff;color:#484746;
+    .l-line{left:-30px;opacity:0;}
+    .r-line{right:-30px;opacity:0;}
+  }
+  &.black:hover{
+    background-color:#484746;color:#fff;
+  }
+  //宽屏时
+  @media (min-width:$md-w) {
+    padding:0 35px;line-height:48px;
+  }
+}
+.section{margin-bottom:10px;}
+.col-wrap{padding-left:0;padding-right:0;}
+.imgBox{
+  position:relative;text-align:center;padding-bottom:100%;background-size:100%;background-repeat:no-repeat;opacity:1; transition: all 1s;
+  &.noSee{opacity:0;transform:translate(0,150px)}
+
+  //.titleImg{position:relative;width:58%;z-index:500;}
+  .v-bottom{
+    position:absolute;bottom:0;left:0;width:100%;text-align:center;padding-bottom:8%;
+    .lineBtn{}
+  }
+  &.bg-1{background-image:url(images/bg-1.png);}
+  &.bg-2{background-color:#746d63;background-image:url(images/bg-2.png);}
+  &.bg-3{background-image:url(images/bg-3.png) ;}
+  &.bg-4{background-image:url(images/bg-4.png) ;}
+  &.bg-5{background-image:url(images/bg-5.png) ;}
+  &.bg-6{background-image:url(images/bg-6.png) ;}
+  //宽频下
+  @media (min-width:$md-w) {
+    &.bg-1{
+      background-position:left top;background-size:50%;padding-bottom:50%;
+      .v-bottom{
+        text-align:right;
+        .lineBtn{margin-right:70px;}
+      }
+    }
+    &.bg-3,&.bg-4,&.bg-6{}
+    &.bg-5{margin-top:-50%;}
+  }
+}
+@media (min-width:$md-w) {
+  #lastRow{margin-top:-25%}
+}
+
+//第三屏
+@media (min-width:$md-w) {
+  .footRow{margin-top:70px;}
+}
+.ads-list{
+  font:26px/42px "Microsoft yahei";color:#484746;width:325px;margin: 20px auto 0;
+  li{
+    height:42px;margin-bottom:19px;vertical-align:middle;
+    &:before{content:'';display:inline-block;width:42px;height:42px;margin-right:10px;background:url(images/ico.png) no-repeat;vertical-align:middle;}
+    &.time:before{background-position: 0 0;}
+    &.adr:before{background-position:-58px 0;}
+    &.phone:before{background-position:-116px 0;}
+    &:last-child{margin-bottom: 0}
+  }
+}
+@media (min-width:$md-w) {
+  .footLogo{
+    text-align:right;
+    img{margin-right:20px;}
+  }
+  .ads-list{
+    margin:0;width: 500px;
+    li{
+      &:before{margin-right:35px;}
+    }
+  }
+}
+.copyrights{
+  text-align:center;color:#767370;width:60%;margin:0 auto;padding-top:20px;
+  p{display:block;}
+  @media (min-width:$md-w) {
+    & p{
+      display:inline-block;
+    }
+  }
+}
+
+.xf-nav{
+  position:fixed;top:4px;right:4px;z-index:1000;
+  .xfBtn{
+    display:block;padding-top:104px;width:85px;height:145px;background:#484746 url(images/xufu.png) center 18px no-repeat;text-align: center;
+    em{display:inline-block;width:28px;height:12px;border-top:2px solid #dadbd9;border-bottom:2px solid #dadbd9;}
+  }
+  @media (min-width:$md-w){
+    .xfBtn{display:none;top:18px;right:18px;}
+  }
+}
+.grayCover{
+  display:none;position:fixed;top:0;left:0;align-items:center;width:100%;height:100%;background-color:rgba(0,0,0,0.6);z-index:600;
+  .xf-list{
+    width:100%;text-align:center;
+    li{
+      a{
+        color:#fff;font:18px/48px "Microsoft YaHei";
+        &:hover{text-decoration:none;}
+      }
+    }
+  }
+}
+
+//内页
+.topBg{background:url(../images/p1.jpg) center no-repeat;}
+.top-cover{position:absolute;left: 0;top:0;width:100%;height:100%;background-color:#000;opacity:0.4;z-index:500;}
+.menu-logo{display:block;width:46px;height:76px;background:url(images/xufu.png) no-repeat;background-size:cover;}
+.title-wrap{position:absolute;left:0;bottom:40%;width:100%;z-index:600;}
+.top-title{text-align:center;font:50px "Microsoft yahei"; color:#fff;}
+.top-subTitle{padding-top:10px;text-align:center;font:20px "Microsoft yahei";color:#fff;}
+@media (min-width:$md-w) {
+  .title-wrap{bottom:30%;}
+  .top-title{text-align:left;padding-left:100px;}
+  .top-subTitle{text-align:left;padding-left: 100px;}
+}
+
+.text-content{
+  padding:10px 30px 0;font:16px "Microsoft yahei";text-align:center;
+  .c-img{float:left;width:100%;margin-right:10px;margin-bottom: 10px;}
+  p{margin-bottom:10px;text-align:left;}
+  h3{font-size:20px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid #484746;}
+}
+@media (min-width:$md-w) {
+  .text-content{
+    padding:10px 100px 0;text-align:left;
+    .c-img{width:200px;}
+
+  }
+}

@@ -1,0 +1,376 @@
+@import url(common.css);
+body, html {
+  height: 100%; }
+
+.b-pd {
+  padding: 4px;
+  background-color: #d5d0ca; }
+  @media (min-width: 992px) {
+    .b-pd {
+      padding: 18px; } }
+
+.fullpage {
+  position: relative;
+  height: 100%;
+  text-align: center; }
+
+.fg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: url(images/fg.png) center top no-repeat;
+  background-size: 100%;
+  z-index: 500; }
+
+@media (min-width: 992px) {
+  .fg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(images/fg.png) top right no-repeat;
+    background-size: auto 100%;
+    z-index: 500; } }
+.slideImg {
+  height: 100%;
+  overflow: hidden; }
+
+.menu {
+  position: absolute;
+  left: 0;
+  bottom: 80px;
+  width: 100%;
+  z-index: 600; }
+  .menu.head {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    padding-left: 100px;
+    padding-top: 30px;
+    z-index: 600; }
+  .menu .en {
+    display: inline-block;
+    position: relative; }
+    .menu .en .logo-t {
+      position: absolute;
+      left: 50%;
+      max-width: none;
+      margin-left: -115px;
+      top: -68px; }
+    .menu .en a {
+      position: relative;
+      display: inline-block;
+      width: 144px;
+      height: 50px;
+      border: 2px solid #dadbd9;
+      font: 16px/48px "Microsoft yahei";
+      color: #fff;
+      text-align: center;
+      transition: all 500ms; }
+      .menu .en a:hover {
+        text-decoration: none;
+        background-color: #dadbd9;
+        color: #484746; }
+      .menu .en a:after {
+        position: absolute;
+        bottom: -18px;
+        left: 50%;
+        margin-left: -5px;
+        content: '';
+        display: block;
+        width: 10px;
+        height: 25px;
+        background: url(images/arrowDown.png) no-repeat;
+        transition: all 500ms; }
+      .menu .en a:hover:after {
+        bottom: -40px;
+        opacity: 0; }
+  .menu a {
+    display: none; }
+    .menu a:hover {
+      text-decoration: none; }
+  @media (min-width: 992px) {
+    .menu a {
+      display: inline-block;
+      width: 13%;
+      height: 50px;
+      font: 16px/48px "Microsoft yahei";
+      color: #fff;
+      text-align: center; } }
+  .menu ul {
+    padding: 0 10%; }
+    .menu ul li {
+      position: relative;
+      float: left;
+      width: 10%;
+      text-align: center; }
+      .menu ul li:last-child {
+        width: 10%; }
+
+.lineBtn {
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+  border: 2px solid #fff;
+  color: #fff;
+  font: 16px/36px "Microsoft Yahei";
+  transition: all 500ms; }
+  .lineBtn em {
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+    width: 23px;
+    height: 2px;
+    background-color: #fff;
+    transition: all 500ms; }
+    .lineBtn em.l-line {
+      left: -12px; }
+    .lineBtn em.r-line {
+      right: -12px; }
+  .lineBtn.black {
+    border-color: #484746;
+    color: #484746; }
+    .lineBtn.black em {
+      background-color: #484746; }
+  .lineBtn:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #484746; }
+    .lineBtn:hover .l-line {
+      left: -30px;
+      opacity: 0; }
+    .lineBtn:hover .r-line {
+      right: -30px;
+      opacity: 0; }
+  .lineBtn.black:hover {
+    background-color: #484746;
+    color: #fff; }
+  @media (min-width: 992px) {
+    .lineBtn {
+      padding: 0 35px;
+      line-height: 48px; } }
+
+.section {
+  margin-bottom: 10px; }
+
+.col-wrap {
+  padding-left: 0;
+  padding-right: 0; }
+
+.imgBox {
+  position: relative;
+  text-align: center;
+  padding-bottom: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  opacity: 1;
+  transition: all 1s; }
+  .imgBox.noSee {
+    opacity: 0;
+    transform: translate(0, 150px); }
+  .imgBox .v-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 8%; }
+  .imgBox.bg-1 {
+    background-image: url(images/bg-1.png); }
+  .imgBox.bg-2 {
+    background-color: #746d63;
+    background-image: url(images/bg-2.png); }
+  .imgBox.bg-3 {
+    background-image: url(images/bg-3.png); }
+  .imgBox.bg-4 {
+    background-image: url(images/bg-4.png); }
+  .imgBox.bg-5 {
+    background-image: url(images/bg-5.png); }
+  .imgBox.bg-6 {
+    background-image: url(images/bg-6.png); }
+  @media (min-width: 992px) {
+    .imgBox.bg-1 {
+      background-position: left top;
+      background-size: 50%;
+      padding-bottom: 50%; }
+      .imgBox.bg-1 .v-bottom {
+        text-align: right; }
+        .imgBox.bg-1 .v-bottom .lineBtn {
+          margin-right: 70px; }
+    .imgBox.bg-5 {
+      margin-top: -50%; } }
+
+@media (min-width: 992px) {
+  #lastRow {
+    margin-top: -25%; } }
+@media (min-width: 992px) {
+  .footRow {
+    margin-top: 70px; } }
+.ads-list {
+  font: 26px/42px "Microsoft yahei";
+  color: #484746;
+  width: 325px;
+  margin: 20px auto 0; }
+  .ads-list li {
+    height: 42px;
+    margin-bottom: 19px;
+    vertical-align: middle; }
+    .ads-list li:before {
+      content: '';
+      display: inline-block;
+      width: 42px;
+      height: 42px;
+      margin-right: 10px;
+      background: url(images/ico.png) no-repeat;
+      vertical-align: middle; }
+    .ads-list li.time:before {
+      background-position: 0 0; }
+    .ads-list li.adr:before {
+      background-position: -58px 0; }
+    .ads-list li.phone:before {
+      background-position: -116px 0; }
+    .ads-list li:last-child {
+      margin-bottom: 0; }
+
+@media (min-width: 992px) {
+  .footLogo {
+    text-align: right; }
+    .footLogo img {
+      margin-right: 20px; }
+
+  .ads-list {
+    margin: 0;
+    width: 500px; }
+    .ads-list li:before {
+      margin-right: 35px; } }
+.copyrights {
+  text-align: center;
+  color: #767370;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 20px; }
+  .copyrights p {
+    display: block; }
+  @media (min-width: 992px) {
+    .copyrights p {
+      display: inline-block; } }
+
+.xf-nav {
+  position: fixed;
+  top: 4px;
+  right: 4px;
+  z-index: 1000; }
+  .xf-nav .xfBtn {
+    display: block;
+    padding-top: 104px;
+    width: 85px;
+    height: 145px;
+    background: #484746 url(images/xufu.png) center 18px no-repeat;
+    text-align: center; }
+    .xf-nav .xfBtn em {
+      display: inline-block;
+      width: 28px;
+      height: 12px;
+      border-top: 2px solid #dadbd9;
+      border-bottom: 2px solid #dadbd9; }
+  @media (min-width: 992px) {
+    .xf-nav .xfBtn {
+      display: none;
+      top: 18px;
+      right: 18px; } }
+
+.grayCover {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 600; }
+  .grayCover .xf-list {
+    width: 100%;
+    text-align: center; }
+    .grayCover .xf-list li a {
+      color: #fff;
+      font: 18px/48px "Microsoft YaHei"; }
+      .grayCover .xf-list li a:hover {
+        text-decoration: none; }
+
+.topBg {
+  background: url(../images/p1.jpg) center no-repeat; }
+
+.top-cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.4;
+  z-index: 500; }
+
+.menu-logo {
+  display: block;
+  width: 46px;
+  height: 76px;
+  background: url(images/xufu.png) no-repeat;
+  background-size: cover; }
+
+.title-wrap {
+  position: absolute;
+  left: 0;
+  bottom: 40%;
+  width: 100%;
+  z-index: 600; }
+
+.top-title {
+  text-align: center;
+  font: 50px "Microsoft yahei";
+  color: #fff; }
+
+.top-subTitle {
+  padding-top: 10px;
+  text-align: center;
+  font: 20px "Microsoft yahei";
+  color: #fff; }
+
+@media (min-width: 992px) {
+  .title-wrap {
+    bottom: 30%; }
+
+  .top-title {
+    text-align: left;
+    padding-left: 100px; }
+
+  .top-subTitle {
+    text-align: left;
+    padding-left: 100px; } }
+.text-content {
+  padding: 10px 30px 0;
+  font: 16px "Microsoft yahei";
+  text-align: center; }
+  .text-content .c-img {
+    float: left;
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+  .text-content p {
+    margin-bottom: 10px;
+    text-align: left; }
+  .text-content h3 {
+    font-size: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #484746; }
+
+@media (min-width: 992px) {
+  .text-content {
+    padding: 10px 100px 0;
+    text-align: left; }
+    .text-content .c-img {
+      width: 200px; } }
