@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <title>办理历史</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/lj.css">
+    <script src="js/zepto.min.js"></script>
+</head>
+<body>
+<div class="top">
+    <img src="images/logo.png" alt="logo">
+    <embed src="css/images/arrow-r.svg" class="arrow-right"></embed>
+</div>
+<div class="nav">
+    <ul class="clearfix tab-btn">
+        <li>
+            <a class="active" href="javascript:">GMV</a>
+        </li>
+        <li>
+            <a href="javascript:">订单量</a>
+        </li>
+        <li>
+            <a href="javascript:">会员数</a>
+        </li>
+        <li>
+            <a href="javascript:">有售SKV</a>
+        </li>
+    </ul>
+</div>
+<div class="data-card ">
+    <div class="card red tab-content">
+        <h1>4526.8</h1>
+        <div class="line">
+            <em class="l"></em>
+            <em class="r"></em>
+        </div>
+        <div class="data clearfix">
+            <p>同比：<span>90.25%</span></p>
+            <p>进销差：<span>90.25%</span></p>
+            <p>折扣率：<span>90.25%</span></p>
+        </div>
+    </div>
+    <div class="card blue tab-content" style="display:none">
+        <h1>4526.8</h1>
+        <div class="line">
+            <em class="l"></em>
+            <em class="r"></em>
+        </div>
+        <div class="data clearfix">
+            <p>同比：<span>90.25%</span></p>
+        </div>
+    </div>
+    <div class="card purple tab-content" style="display:none">
+        <h1>4526.8</h1>
+        <div class="line">
+            <em class="l"></em>
+            <em class="r"></em>
+        </div>
+        <div class="data clearfix">
+            <p>新增：<span>90.25%</span></p>
+            <p>忠诚：<span>800万</span></p>
+        </div>
+    </div>
+    <div class="card green tab-content" style="display:none">
+        <h1>4526.8</h1>
+        <div class="line">
+            <em class="l"></em>
+            <em class="r"></em>
+        </div>
+        <div class="data clearfix">
+            <p>同比：<span>90.25%</span></p>
+            <p>新增：<span>200万</span></p>
+        </div>
+    </div>
+</div>
+
+<div class="chart-wrap">
+    <h3>15大促，辉煌回顾</h3>
+    <div id="tj-bar" class="chart-box bar"></div>
+    <div class="chart-data">
+        <em></em>
+        <p>2015年</p>
+        <p>公司共举办大促14场，累计销售800亿，日均销售13亿</p>
+        <p>双十一当日</p>
+        <p>贡献全年单日最高销售50亿</p>
+    </div>
+</div>
+
+
+<script src="js/main.js"></script>
+<script src="js/echarts.common.min.js"></script>
+<script>
+    $(function () {
+//        头部数组变化
+        $("body").tab();
+
+        //柱状图数据
+        var bar_op = {
+            title:{
+                text:"成交额（亿）"
+            },
+            "xAxis" : [
+                {
+                    "type" : "category",
+                    "data" : ["双蛋","腊八","大促","4号大区","5号大区","6号大区","7号大区","8号大区","9号大区","818大促"]
+                }
+            ],
+            "yAxis" : [
+                {
+                    "type" : "value"
+                }
+            ],
+            "series" : [
+                {
+                    "name":"交易额",
+                    "data":[10,50,60,78,85,98,20,54,84,20]
+                }
+            ]
+        };
+        //创建柱状图
+        var bar_chart = ec.createChart(bar_op,document.getElementById("tj-bar"),"bar");
+        //点击柱状图的回调触发函数
+        bar_chart.on("click",function (param) {
+           console.log("点击的数据是:%c%s","#ff0",param.data);
+        });
+
+        //控制图形缩放
+        $(window).resize(function () {
+            bar_chart.resize();
+        })
+    })
+</script>
+</body>
+</html>

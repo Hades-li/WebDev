@@ -1,0 +1,268 @@
+@charset "UTF-8";
+.top {
+  position: relative;
+  padding: 0.42rem 0.6rem;
+  background-color: #2ebbe6;
+  text-align: center;
+  vertical-align: middle; }
+  .top img {
+    display: block;
+    width: 2.76rem;
+    margin: 0 auto; }
+  .top .arrow-right {
+    position: absolute;
+    right: 0.6rem;
+    top: 0.3rem;
+    width: 0.64rem; }
+  .top .arrow-left {
+    position: absolute;
+    left: 0.6rem;
+    top: 0.3rem;
+    width: 0.64rem;
+    transform: rotateY(180deg); }
+
+.nav {
+  padding: 0.3rem;
+  border-bottom: 1px solid #ddd; }
+  .nav ul li {
+    float: left;
+    width: 25%; }
+    .nav ul li a {
+      display: block;
+      width: 80%;
+      height: 25px;
+      margin: 0 auto;
+      line-height: 25px;
+      font-size: 13px;
+      color: #666;
+      background-color: transparent;
+      border-radius: 12.5px;
+      text-align: center; }
+      .nav ul li a:hover, .nav ul li a.active {
+        color: #fff;
+        background-color: #2ebbe6; }
+    @media screen and (min-width: 320px) {
+      .nav ul li a {
+        display: block;
+        width: 90%;
+        height: 25px;
+        margin: 0 auto;
+        line-height: 25px;
+        font-size: 12px;
+        color: #666;
+        background-color: transparent;
+        border-radius: 12.5px;
+        text-align: center; }
+        .nav ul li a:hover, .nav ul li a.active {
+          color: #fff;
+          background-color: #2ebbe6; } }
+
+.data-card {
+  padding: 0.16rem;
+  background-color: #fff; }
+  .data-card .card {
+    background-color: #eb6100;
+    border-radius: 0.2rem;
+    transition: background-color 300ms; }
+    .data-card .card.red {
+      background-color: #eb6100; }
+    .data-card .card.blue {
+      background-color: #2ebbe6; }
+    .data-card .card.purple {
+      background-color: #8957a1; }
+    .data-card .card.green {
+      background-color: #8fc31f; }
+    .data-card .card h1 {
+      color: #fff;
+      font-size: 55px;
+      padding: 0.24rem 0;
+      text-align: center; }
+      .data-card .card h1 .sm {
+        font-size: 13px; }
+      .data-card .card h1:after {
+        content: "亿";
+        font-size: 13px; }
+    .data-card .card .line {
+      border-bottom: 1px solid #fff; }
+      .data-card .card .line em {
+        display: block;
+        width: 0.16rem;
+        height: 0.34rem;
+        margin-top: -0.17rem;
+        background-color: #fff; }
+        .data-card .card .line em.l {
+          float: left;
+          border-radius: 0 0.18rem 0.18rem 0; }
+        .data-card .card .line em.r {
+          float: right;
+          border-radius: 0.18rem 0 0 0.18rem; }
+    .data-card .card .data {
+      padding: 0.6rem;
+      box-sizing: content-box; }
+      .data-card .card .data p {
+        float: left;
+        width: 33.3333333333333%;
+        color: #fff;
+        font-size: 12px;
+        text-align: center; }
+
+.chart-wrap > h3 {
+  padding-left: 0.64rem;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  background-color: #f5f5f5;
+  line-height: 1.24rem;
+  font-size: 13px; }
+.chart-wrap .chart-box {
+  height: 9.36rem;
+  background-color: #fff; }
+  .chart-wrap .chart-box.bar {
+    height: 9.36rem; }
+  .chart-wrap .chart-box.pie {
+    height: 16.44rem; }
+.chart-wrap .chart-data {
+  position: relative;
+  border-top: 1px solid #ddd;
+  padding: 1rem 0.6rem 0.4rem; }
+  .chart-wrap .chart-data > em {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin-left: -2.5px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    background-color: #fafafa;
+    transform: rotateZ(45deg); }
+  .chart-wrap .chart-data > p {
+    line-height: 20px;
+    font-size: 13px;
+    text-align: center; }
+  .chart-wrap .chart-data > h3 {
+    font-size: 18px;
+    text-align: center; }
+    .chart-wrap .chart-data > h3.blue {
+      color: #2ebbe6; }
+    .chart-wrap .chart-data > h3.purple {
+      color: #8957a1; }
+.chart-wrap .daqu-chose {
+  padding-top: 1.6rem;
+  padding-bottom: 0.8rem;
+  text-align: center; }
+  .chart-wrap .daqu-chose .daqu-sel {
+    padding-bottom: 32.5px; }
+    .chart-wrap .daqu-chose .daqu-sel select {
+      display: inline-block;
+      padding: 0 0.86rem;
+      background-color: #2ebbe6;
+      color: #fff;
+      line-height: 1.2rem;
+      font-size: 12px;
+      border: 0 none;
+      -webkit-appearance: none;
+      border-radius: 5px;
+      vertical-align: top; }
+  .chart-wrap .daqu-chose > h3 {
+    font-size: 12px;
+    font-weight: 400; }
+  .chart-wrap .daqu-chose p {
+    font-size: 30px;
+    padding-bottom: 15px; }
+    .chart-wrap .daqu-chose p.money {
+      color: #2ebbe6; }
+      .chart-wrap .daqu-chose p.money:after {
+        content: "万元";
+        font-size: 12px; }
+    .chart-wrap .daqu-chose p.dingdan {
+      color: #eb6100; }
+      .chart-wrap .daqu-chose p.dingdan:after {
+        content: "单";
+        font-size: 12px; }
+
+.chart-wrap-s {
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  height: 265px; }
+  .chart-wrap-s .chart-box {
+    float: left;
+    height: 100%;
+    width: 68%; }
+  .chart-wrap-s .chart-data {
+    position: relative;
+    float: right;
+    border-left: 1px solid #ddd;
+    height: 100%;
+    width: 32%;
+    padding-top: 1.7rem;
+    padding-left: 0.6rem;
+    background-color: #fafafa; }
+    .chart-wrap-s .chart-data .arrow-left {
+      position: absolute;
+      top: 50%;
+      left: -5px;
+      display: block;
+      width: 7px;
+      height: 7px;
+      margin-top: -3.5px;
+      border-top: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      background-color: #fafafa;
+      transform: rotateZ(-45deg); }
+    .chart-wrap-s .chart-data > h3 {
+      font-size: 18px; }
+      .chart-wrap-s .chart-data > h3.red {
+        color: #eb6100; }
+      .chart-wrap-s .chart-data > h3.blue {
+        color: #2ebbe6; }
+    .chart-wrap-s .chart-data p {
+      line-height: 21px;
+      font-size: 12px; }
+
+.daqu-top {
+  padding-top: 0.66rem;
+  padding-bottom: 0.52rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #fafafa; }
+  .daqu-top .daqu-data {
+    width: 50%;
+    padding-left: 1rem; }
+    .daqu-top .daqu-data h3 {
+      color: #666;
+      font-size: 15px;
+      padding-bottom: 8px; }
+    .daqu-top .daqu-data ul li {
+      color: #2ebbe6;
+      font-size: 13px;
+      padding: 2px 0; }
+      .daqu-top .daqu-data ul li span {
+        display: inline-block; }
+        .daqu-top .daqu-data ul li span:first-child {
+          width: 74px; }
+      .daqu-top .daqu-data ul li:first-child {
+        color: #eb6100; }
+      .daqu-top .daqu-data ul li:last-child {
+        color: #8957a1; }
+
+.table-wrap table {
+  width: 100%;
+  table-layout: fixed; }
+  .table-wrap table th {
+    color: #999;
+    font-size: 13px;
+    padding: 12.5px 0;
+    background-color: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0; }
+    .table-wrap table th:last-child {
+      border-right: 0 none; }
+  .table-wrap table td {
+    padding: 21.5px 0;
+    border-bottom: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+    background-color: #fff;
+    font-size: 12px;
+    text-align: center; }
+    .table-wrap table td:last-child {
+      border-right: 0 none; }
